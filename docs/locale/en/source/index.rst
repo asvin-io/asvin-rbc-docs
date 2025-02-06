@@ -4,7 +4,7 @@
 	  You can change it using selector at the bottom of that
 	  navigation panel.
 
-Risk by Context
+Risk by Context™
 ===============
 
 .. image:: images/asvin-logo-transparent.png
@@ -17,11 +17,11 @@ An Enterprise-grade Cyber security Risk management solution.
    :maxdepth: 1
 
    introduction
-   key-concepts
+
    getting-started/getting-started
-   tutorials/tutorials
+   how-to/how-to
+   key-concepts/key-concepts
    security/security
    rest-apis
    contribution/contribution
    glossary
-   releases/releases
