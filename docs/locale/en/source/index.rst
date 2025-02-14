@@ -17,11 +17,9 @@ An Enterprise-grade Cyber security Risk management solution.
    :maxdepth: 1
 
    introduction
-
    getting-started/getting-started
    how-to/how-to
    key-concepts/key-concepts
    security/security
-   rest-apis
    contribution/contribution
    glossary

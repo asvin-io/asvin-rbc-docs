@@ -10,7 +10,7 @@ The threat landscape of OT has expanded significantly with the integration of In
 .. image:: images/ot-env.png
     :alt: OT Environment
 
-Key Cybersecurity Risks in OT Environments
+Key Reasons for Increased Cybersecurity Risks in OT Environments
 
 1. **Increased IoT and Industrial Connectivity**
 

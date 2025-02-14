@@ -19,14 +19,14 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
-project = u'asvin Risk by Context'
-copyright = u'2025, asvin'
-author = u'asvin'
+project = u'Risk by Context™'
+copyright = u'2025, asvin GmbH'
+author = u'asvin GmbH'
 
 # The short X.Y version
-version = u''
+version = u'0.1'
 # The full version, including alpha/beta/rc tags
-release = u'0.0.1'
+release = u'0.1.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -113,7 +113,7 @@ html_js_files = [
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Asvindoc'
+htmlhelp_basename = 'RiskByContextDocs'
 
 # translation
 locale_dirs = ['locale/']   # po files will be created in this directory
@@ -143,8 +143,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'asivn.tex', u'Risk by Context™ Documentation',
-     u'asvin', 'manual'),
+   (master_doc, 'risk-by-context.tex', u'Risk by Context™ Technical Documentation',
+    u'asvin GmbH', 'manual'),
 ]
 
 
@@ -153,7 +153,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'asvin', u'Risk by Context™ Documentation',
+    (master_doc, u'Risk by Context', u'Technical Documentation',
      [author], 1)
 ]
 
@@ -164,8 +164,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'asvin', u'Risk by Context™ Documentation',
-     author, 'asvin', 'One line description of project.',
+    (master_doc, u'Risk by Context', u'Technical Documentation',
+     author, project, 'A comprehensive cyberrisk management.',
      'Miscellaneous'),
 ]
 
