@@ -1,25 +1,18 @@
 .. note:: Please do not modify without first getting approval from m.ross@asvin.io
 
-Asvin Code of Conduct
+asvin Code of Conduct
 #####################
 
-Asvin GmbH developed a platform to distribute firmware updates for IoT devices. We also encourage external developers to contribute in the 
-project. Which means it is an open-source project where participants can choose to work together, and in that process experience differences in 
-language, location, nationality, and experience. In such a diverse environment, misunderstandings and disagreements happen, which in most cases 
-can be resolved informally. In rare cases, however, behavior can intimidate, harass, or otherwise disrupt one or more people in the community, 
-which Asvin will not tolerate.
+asvin GmbH developed a platform to distribute firmware updates for IoT devices. We also encourage external developers to contribute in the project. Which means it is an open-source project where participants can choose to work together, and in that process experience differences in 
+language, location, nationality, and experience. In such a diverse environment, misunderstandings and disagreements happen, which in most cases can be resolved informally. In rare cases, however, behavior can intimidate, harass, or otherwise disrupt one or more people in the community, which asvin will not tolerate.
 
-A Code of Conduct is useful to define accepted and acceptable behaviors and to promote high standards of professional practice. It also provides a 
-benchmark for self evaluation and acts as a vehicle for better identity of the organization.
+A Code of Conduct is useful to define accepted and acceptable behaviors and to promote high standards of professional practice. It also provides a benchmark for self evaluation and acts as a vehicle for better identity of the organization.
 
-This code (CoC) applies to any member of the Asvin community – developers, participants in meetings, teleconferences, mailing lists, conferences or 
-functions, etc. Note that this code complements rather than replaces legal rights and obligations pertaining to any particular situation.
+This code (CoC) applies to any member of the asvin community – developers, participants in meetings, teleconferences, mailing lists, conferences or functions, etc. Note that this code complements rather than replaces legal rights and obligations pertaining to any particular situation.
 
 Statement of Intent
 *******************
-Asvin is committed to maintain a positive :ref:`work environment<Work Environment>`. This commitment calls for a workplace where 
-:ref:`participants<Participant>` at all levels behave according to the rules of the following code. A foundational concept of this code is that 
-we all share responsibility for our work environment.
+asvin is committed to maintain a positive :ref:`work environment<Work Environment>`. This commitment calls for a workplace where :ref:`participants<Participant>` at all levels behave according to the rules of the following code. A foundational concept of this code is that we all share responsibility for our work environment.
 
 Code
 ****
@@ -32,15 +25,10 @@ Code
 #. Seek, accept, and offer objective work criticism, and :ref:`acknowledge<Acknowledgement>` properly the contributions of others.
 #. Be honest about your own qualifications, and about any circumstances that might lead to conflicts of interest.
 #. Respect the privacy of others and the confidentiality of data you access.
-#. With respect to cultural differences, be conservative in what you do and liberal in what you accept from others, but not to the point of 
-   accepting disrespectful, unprofessional or unfair or :ref:`unwelcome behavior<Unwelcome Behavior>` or :ref:`advances<Unwelcome Sexual Advance>`.
-#. Promote the rules of this Code and take action (especially if you are in a :ref:`leadership position<Leadership Position>`) to bring the 
-   discussion back to a more civil level whenever inappropriate behaviors are observed.
-#. Stay on topic: Make sure that you are posting to the correct channel and avoid off-topic discussions. Remember when you update an issue or 
-   respond to an email you are potentially sending to a large number of people.
-#. Step down considerately: Members of every project come and go, and the Asvin is no different. When you leave or disengage from the project, 
-   in whole or in part, we ask that you do so in a way that minimizes disruption to the project. This means you should tell people you are leaving 
-   and take the proper steps to ensure that others can pick up where you left off.
+#. With respect to cultural differences, be conservative in what you do and liberal in what you accept from others, but not to the point of accepting disrespectful, unprofessional or unfair or :ref:`unwelcome behavior<Unwelcome Behavior>` or :ref:`advances<Unwelcome Sexual Advance>`.
+#. Promote the rules of this Code and take action (especially if you are in a :ref:`leadership position<Leadership Position>`) to bring the discussion back to a more civil level whenever inappropriate behaviors are observed.
+#. Stay on topic: Make sure that you are posting to the correct channel and avoid off-topic discussions. Remember when you update an issue or respond to an email you are potentially sending to a large number of people.
+#. Step down considerately: Members of every project come and go, and the asvin is no different. When you leave or disengage from the project, in whole or in part, we ask that you do so in a way that minimizes disruption to the project. This means you should tell people you are leaving and take the proper steps to ensure that others can pick up where you left off.
 
 Glossary
 ********
@@ -76,8 +64,7 @@ is a record of the origin(s) and author(s) of a contribution.
 
 Harassment
 ==========
-is any conduct, verbal or physical, that has the intent or effect of interfering with an individual, or that creates an intimidating, hostile, or 
-offensive environment.
+is any conduct, verbal or physical, that has the intent or effect of interfering with an individual, or that creates an intimidating, hostile, or offensive environment.
 
 .. _Leadership Position:
 
@@ -94,22 +81,19 @@ includes the following persons:
 * Developers
 * Member representatives
 * Staff members
-* Anyone from the Public partaking in the Asvin work environment (e.g. contribute code, comment on our code or specs, email us, attend our 
-  conferences, functions, etc)
+* Anyone from the Public partaking in the asvin work environment (e.g. contribute code, comment on our code or specs, email us, attend our conferences, functions, etc)
 
 .. _Respect:
 
 Respect
 =======
-is the genuine consideration you have for someone (if only because of their status as participant in Asvin, like yourself), and that you show 
-by treating them in a polite and kind way.
+is the genuine consideration you have for someone (if only because of their status as participant in asvin, like yourself), and that you show by treating them in a polite and kind way.
 
 .. _Sexual Harassment:
 
 Sexual Harassment
 =================
-includes visual displays of degrading sexual images, sexually suggestive conduct, offensive remarks of a sexual nature, requests for sexual favors, 
-unwelcome physical contact, and sexual assault.
+includes visual displays of degrading sexual images, sexually suggestive conduct, offensive remarks of a sexual nature, requests for sexual favors, unwelcome physical contact, and sexual assault.
 
 .. _Unwelcome Behavior:
 
@@ -134,30 +118,23 @@ includes requests for sexual favors, and other verbal or physical conduct of a s
 
 * submission to such conduct is made either explicitly or implicitly a term or condition of an individual's employment,
 * submission to or rejection of such conduct by an individual is used as a basis for employment decisions affecting the individual,
-* such conduct has the purpose or effect of unreasonably interfering with an individual's work performance or creating an intimidating hostile or 
-  offensive working environment.
+* such conduct has the purpose or effect of unreasonably interfering with an individual's work performance or creating an intimidating hostile or offensive working environment.
 
 .. _Workplace Bullying:
 
 Workplace Bullying
 ==================
-is a tendency of individuals or groups to use persistent aggressive or unreasonable behavior (e.g. verbal or written abuse, offensive conduct or 
-any interference which undermines or impedes work) against a co-worker or any professional relations.
+is a tendency of individuals or groups to use persistent aggressive or unreasonable behavior (e.g. verbal or written abuse, offensive conduct or any interference which undermines or impedes work) against a co-worker or any professional relations.
 
 .. _Work Environment:
 
 Work Environment
 ================
-is the set of all available means of collaboration, including, but not limited to messages to mailing lists, private correspondence, Web pages, 
-chat channels, phone and video teleconferences, and any kind of face-to-face meetings or discussions.
+is the set of all available means of collaboration, including, but not limited to messages to mailing lists, private correspondence, Web pages, chat channels, phone and video teleconferences, and any kind of face-to-face meetings or discussions.
 
 Incident Procedure
 ==================
-To report incidents or to appeal reports of incidents, send email to m.ross@asvin.io. Please include any available relevant information, including
-links to any publicly accessible material relating to the matter. Every effort will be taken to ensure a safe and collegial environment in which 
-to collaborate on matters relating to the Project. In order to protect the community, the Project reserves the right to take appropriate action, 
-potentially including the removal of an individual from any and all participation in the project. The Project will work towards an equitable 
-resolution in the event of a misunderstanding.
+To report incidents or to appeal reports of incidents, send email to m.ross@asvin.io. Please include any available relevant information, including links to any publicly accessible material relating to the matter. Every effort will be taken to ensure a safe and collegial environment in which to collaborate on matters relating to the Project. In order to protect the community, the Project reserves the right to take appropriate action, potentially including the removal of an individual from any and all participation in the project. The Project will work towards an equitable resolution in the event of a misunderstanding.
 
 Credits
 *******

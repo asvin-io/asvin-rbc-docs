@@ -1,151 +1,45 @@
 ================================================
 What is Contextual data and why is it important?
 ================================================
-In Risk by Context™ solution, contextual data refers to the multi-dimensional information 
-that provides a deeper, real-world understanding of assets, processes, network structures, and 
-security risks—far beyond what traditional vulnerability assessments can offer. While IT security 
-primarily focuses on data protection, OT cybersecurity must also address operational continuity, 
-physical safety, and resilience against cyber threats. The Risk by Context™ solution leverages this 
-contextual data to improve risk visibility, enhance threat prioritization, and facilitate proactive 
-defense strategies tailored specifically to industrial environments.
+In Risk by Context™ solution, contextual data refers to the multi-dimensional information that provides a deeper, real-world understanding of assets, processes, network structures, and security risks—far beyond what traditional vulnerability assessments can offer. While IT security primarily focuses on data protection, OT cybersecurity must also address operational continuity physical safety, and resilience against cyber threats. The Risk by Context™ solution leverages this contextual data to improve risk visibility, enhance threat prioritization, and facilitate proactive defense strategies tailored specifically to industrial environments.
 
 Contextual data within OT cybersecurity encompasses several critical dimensions that are crucial 
 for effective risk management:
 
 Asset Information 
 ^^^^^^^^^^^^^^^^^
-It contains detailed attributes of OT devices, such as device type, manufacturer, 
-model, firmware version, installed software, and active communication protocols. These details help assess
-cyber security risks risen by known vulnerabilities and exploits. For an example, consider a PLC with
-an outdated firmware version that’s flagged by vulnerability scanners. While the firmware may
-have a severe vulnerability related to a Wi-Fi communication protocol, the actual risk depends on 
-whether Wi-Fi is enabled. If the Wi-Fi is turned off and the PLC only uses a secure wired 
-protocol, the vulnerability may not be exploitable. By considering both the firmware version
-and active communication protocols, Risk by Context™ accurately assesses the risk and 
-prioritize remediation effectively.
+It contains detailed attributes of OT devices, such as device type, manufacturer, model, firmware version, installed software, and active communication protocols. These details help assess cyber security risks risen by known vulnerabilities and exploits. For an example, consider a PLC with an outdated firmware version that’s flagged by vulnerability scanners. While the firmware may have a severe vulnerability related to a Wi-Fi communication protocol, the actual risk depends on whether Wi-Fi is enabled. If the Wi-Fi is turned off and the PLC only uses a secure wired protocol, the vulnerability may not be exploitable. By considering both the firmware version and active communication protocols, Risk by Context™ accurately assesses the risk and prioritize remediation effectively.
 
 Network Segmentation and Connectivity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-It includes mapping how OT devices interact across 
-various network segments. This involves identifying trusted and untrusted connections, internal and 
-external bound connections, segment size, detecting potential attack paths, and ensuring that any risks in 
-network design are identified and and impact of a cyber risk is mitigated. For an instance, consider 
-two industrial robots—one in a larger network segment with critical manufacturing tasks and the 
-other in a smaller, isolated segment. The robot in the larger segment is connected to more devices, 
-meaning a breach could have a wider impact across the network. In contrast, the robot in 
-the smaller segment is more isolated, limiting the potential damage. In the Risk by Context™, the 
-robot in the larger segment would be ranked as a higher risk due to its broader potential 
-impact, while the robot in the smaller segment would be ranked lower, reflecting the more 
-contained risk. This shows how segment size and connectivity affect risk levels.
+It includes mapping how OT devices interact across various network segments. This involves identifying trusted and untrusted connections, internal and external bound connections, segment size, detecting potential attack paths, and ensuring that any risks in network design are identified and and impact of a cyber risk is mitigated. For an instance, consider two industrial robots—one in a larger network segment with critical manufacturing tasks and the other in a smaller, isolated segment. The robot in the larger segment is connected to more devices meaning a breach could have a wider impact across the network. In contrast, the robot in the smaller segment is more isolated, limiting the potential damage. In the Risk by Context™, the robot in the larger segment would be ranked as a higher risk due to its broader potential impact, while the robot in the smaller segment would be ranked lower, reflecting the more contained risk. This shows how segment size and connectivity affect risk levels.
 
 Operational Significance
 ^^^^^^^^^^^^^^^^^^^^^^^^
-It involves understanding the importance of each asset in the overall
-industrial process. This allows risk assessments and mitigation efforts to be aligned with 
-mission-critical operations, ensuring that threats to key systems are prioritized according to 
-their operational impact. For an instance, two industrial cameras in a manufacturing facility—one 
-monitoring a non-critical storage area and the other overseeing a high-risk assembly line. 
-If the camera in the storage area is compromised, the impact would be minimal, as it’s not 
-essential to operations. However, a breach of the camera on the assembly line could allow 
-attackers to manipulate the monitoring system, leading to unauthorized access to sensitive 
-production data, potential safety hazards, or production delays. In the Risk by Context™, 
-the camera in the critical assembly line would be ranked as a higher risk due to its 
-operational significance, as a cyber attack on it could have a far greater impact on 
-both safety and operational continuity.
+It involves understanding the importance of each asset in the overall industrial process. This allows risk assessments and mitigation efforts to be aligned with mission-critical operations, ensuring that threats to key systems are prioritized according to their operational impact. For an instance, two industrial cameras in a manufacturing facility—one monitoring a non-critical storage area and the other overseeing a high-risk assembly line. If the camera in the storage area is compromised, the impact would be minimal, as it’s not essential to operations. However, a breach of the camera on the assembly line could allow attackers to manipulate the monitoring system, leading to unauthorized access to sensitive production data, potential safety hazards, or production delays. In the Risk by Context™, the camera in the critical assembly line would be ranked as a higher risk due to its operational significance, as a cyber attack on it could have a far greater impact on both safety and operational continuity.
 
 Business Impact
 ^^^^^^^^^^^^^^^
-Assessing how cyber risks impact production efficiency, financial 
-stability, regulatory compliance, and operational continuity enables a more strategic risk 
-management approach. By prioritizing risks based on their overall business impact rather 
-than just technical concerns, organizations can make informed decisions to safeguard operations 
-and minimize disruptions. For an example, take two SCADA systems in a manufacturing facility—one 
-controlling water treatment for non-essential cooling and the other managing energy 
-distribution across the entire facility. A cyberattack on the energy management system 
-could cause significant production downtime, higher energy costs, or equipment failure, 
-resulting in major financial loss and reputational damage. In contrast, an attack on the 
-water treatment system would have a less severe impact, as it primarily affects cooling 
-operations. In the Risk by Context™, the energy management SCADA system would be 
-ranked as a higher risk due to its business impact, as it directly influences operational 
-costs and overall production capacity.
+Assessing how cyber risks impact production efficiency, financial stability, regulatory compliance, and operational continuity enables a more strategic risk management approach. By prioritizing risks based on their overall business impact rather than just technical concerns, organizations can make informed decisions to safeguard operations and minimize disruptions. For an example, take two SCADA systems in a manufacturing facility—one controlling water treatment for non-essential cooling and the other managing energy distribution across the entire facility. A cyberattack on the energy management system could cause significant production downtime, higher energy costs, or equipment failure, resulting in major financial loss and reputational damage. In contrast, an attack on the water treatment system would have a less severe impact, as it primarily affects cooling operations. In the Risk by Context™, the energy management SCADA system would be ranked as a higher risk due to its business impact, as it directly influences operational costs and overall production capacity.
 
 Health Safety Environment Consideration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Cyber threats targeting ICS, SCADA, or automated 
-shutdown systems can lead to equipment failures, hazardous material leaks, or unsafe working 
-conditions. Addressing these risks ensures operational safety, regulatory compliance, and 
-resilience against cyber-physical threats in industrial environments. Imagine two 
-industrial robots in a manufacturing facility—one used in automated assembly with minimal 
-human interaction, and the other used for welding in close proximity to workers. 
-A cyberattack on the robot used in welding could manipulate its movements, causing 
-it to operate unsafely near workers, potentially resulting in burns, injuries, or 
-other accidents. On the other hand, an attack on the assembly robot, which is 
-isolated and operates without human interaction, would have a far less direct 
-impact on health and safety. In the Risk by Context™, the welding robot would be 
-ranked as a higher risk due to its health and safety impact, as a cyberattack could directly 
-threaten worker safety and cause harm.
+Cyber threats targeting ICS, SCADA, or automated shutdown systems can lead to equipment failures, hazardous material leaks, or unsafe working conditions. Addressing these risks ensures operational safety, regulatory compliance, and resilience against cyber-physical threats in industrial environments. Imagine two industrial robots in a manufacturing facility—one used in automated assembly with minimal human interaction, and the other used for welding in close proximity to workers. A cyberattack on the robot used in welding could manipulate its movements, causing it to operate unsafely near workers, potentially resulting in burns, injuries, or other accidents. On the other hand, an attack on the assembly robot, which is isolated and operates without human interaction, would have a far less direct impact on health and safety. In the Risk by Context™, the welding robot would be ranked as a higher risk due to its health and safety impact, as a cyberattack could directly threaten worker safety and cause harm.
 
 Process Dependencies
 ^^^^^^^^^^^^^^^^^^^^
-Aim is to analyzing the interconnections between OT systems and devices 
-to  understand their dependencies. This insight helps identify cascading failure risks and potential 
-domino effects that could disrupt multiple layers of the industrial ecosystem in the event of 
-a security breach or operational failure. Take for an example, two conveyor belt systems in a 
-manufacturing plant—one transporting raw materials to storage and the other feeding components 
-directly into an assembly line. If a cyberattack disrupts the raw material conveyor, production 
-may slow down, but operations can continue using existing stock. However, if the assembly line 
-conveyor is compromised, the entire production process could halt, leading to downtime and 
-financial losses. In the Risk by Context™, the assembly line conveyor would be ranked as a 
-higher risk due to its process dependencies, as its failure would have a direct and immediate 
-impact on production continuity.
+Aim is to analyzing the interconnections between OT systems and devices to  understand their dependencies. This insight helps identify cascading failure risks and potential domino effects that could disrupt multiple layers of the industrial ecosystem in the event of a security breach or operational failure. Take for an example, two conveyor belt systems in a manufacturing plant—one transporting raw materials to storage and the other feeding components directly into an assembly line. If a cyberattack disrupts the raw material conveyor, production may slow down, but operations can continue using existing stock. However, if the assembly line conveyor is compromised, the entire production process could halt, leading to downtime and financial losses. In the Risk by Context™, the assembly line conveyor would be ranked as a higher risk due to its process dependencies, as its failure would have a direct and immediate impact on production continuity.
 
 Business Continuity and Recovery Plans
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Assessing the organization’s preparedness to handle 
-cyber incidents, ensuring that incident response plans, backup systems, and failover mechanisms 
-are in place to minimize disruptions and quickly recover from cyber incidents or operational 
-failures. To put this into perspective, consider two data logging systems in an oil 
-refinery—one used for historical performance analysis and the other for 
-real-time monitoring of critical safety parameters. If a cyberattack disables the 
-historical logging system, past data may be lost, but operations continue 
-unaffected. However, if the real-time monitoring system is compromised and no 
-backup exists, operators lose visibility into pressure and temperature readings, delaying 
-incident response and increasing the risk of catastrophic failure. In the Risk by Context™, the 
-real-time monitoring system would be ranked as a higher risk due to its critical 
-role in business continuity, as its failure could escalate an incident and prolong recovery time.
+Assessing the organization’s preparedness to handle cyber incidents, ensuring that incident response plans, backup systems, and failover mechanisms are in place to minimize disruptions and quickly recover from cyber incidents or operational failures. To put this into perspective, consider two data logging systems in an oil refinery—one used for historical performance analysis and the other for real-time monitoring of critical safety parameters. If a cyberattack disables the historical logging system, past data may be lost, but operations continue unaffected. However, if the real-time monitoring system is compromised and no backup exists, operators lose visibility into pressure and temperature readings, delaying incident response and increasing the risk of catastrophic failure. In the Risk by Context™, the real-time monitoring system would be ranked as a higher risk due to its critical role in business continuity, as its failure could escalate an incident and prolong recovery time.
 
 User Roles and Access Controls
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-It involves monitoring who has access to critical OT systems, enforcing 
-role-based access controls (RBAC), and detecting misconfigured or excessive permissions. This 
-ensures that privileged accounts are managed securely, preventing unauthorized access that could 
-lead to exploitation. For an example, take two industrial controllers in a manufacturing 
-plant—one managing environmental monitoring (e.g., temperature and humidity sensors) and the 
-other controlling production line operations. The environmental monitoring controller is accessible 
-only to basic operators with read-only permissions, limiting the potential impact of unauthorized 
-access. In contrast, the production line controller is managed by administrators who can modify 
-operational parameters and override system settings. If a cyberattack compromises the 
-administrator account, an attacker could disrupt production, cause machine failures, or 
-introduce hazardous conditions. In the Risk by Context™, the production line 
-controller would be ranked as a higher risk due to its higher privilege level, making 
-it more critical to secure against unauthorized access
+It involves monitoring who has access to critical OT systems, enforcing role-based access controls(RBAC), and detecting misconfigured or excessive permissions. This ensures that privileged accountsa re managed securely, preventing unauthorized access that could lead to exploitation. For an example, take two industrial controllers in a manufacturing plant—one managing environmental monitoring (e.g., temperature and humidity sensors) and the other controlling production line operations. The environmental monitoring controller is accessible only to basic operators with read-only permissions, limiting the potential impact of unauthorized access. In contrast, the production line controller is managed by administrators who can modify operational parameters and override system settings. If a cyberattack compromises the administrator account, an attacker could disrupt production, cause machine failures, or introduce hazardous conditions. In the Risk by Context™, the production line controller would be ranked as a higher risk due to its higher privilege level, making it more critical to secure against unauthorized access
 
 Firewall Rules and Security Policies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-It comprises of evaluating network security policies, firewall 
-configurations, access control lists (ACLs), and intrusion detection systems (IDS) to ensure that 
-only authorized traffic is allowed. Proper rule enforcement reduces the risk of lateral movement 
-within the OT network by attackers. For an instance, a remote access gateway with permissive 
-firewall rules presents a far greater risk than an HMI system that is restricted to internal 
-network traffic. If the gateway allows unrestricted inbound connections from external networks, 
-an attacker could exploit it to gain entry into the OT environment. In contrast, the HMI system,
-protected by strict firewall policies that allow only predefined internal communications, has a 
-much smaller attack surface. In the Risk by Context™, the remote access gateway would be 
-ranked as a higher risk due to its exposure to external threats, highlighting the need for strict 
-firewall policies and segmentation.
+It comprises of evaluating network security policies, firewall configurations, access control lists (ACLs), and intrusion detection systems (IDS) to ensure that only authorized traffic is allowed. Proper rule enforcement reduces the risk of lateral movement within the OT network by attackers. For an instance, a remote access gateway with permissive firewall rules presents a far greater risk than an HMI system that is restricted to internal network traffic. If the gateway allows unrestricted inbound connections from external networks, an attacker could exploit it to gain entry into the OT environment. In contrast, the HMI system protected by strict firewall policies that allow only predefined internal communications, has a much smaller attack surface. In the Risk by Context™, the remote access gateway would be ranked as a higher risk due to its exposure to external threats, highlighting the need for strict firewall policies and segmentation.
 
-
-By integrating these diverse contextual elements into a cybersecurity knowledge graph, the Risk by 
-Context™ solution moves beyond static, one-dimensional risk scoring. This approach enables dynamic 
-analysis of interdependencies, threat vectors, and evolving risks, resulting in the generation of a 
-multi-dimensional, adaptive risk score—the RBC-Index.
+By integrating these diverse contextual elements into a cybersecurity knowledge graph, the Risk by Context™ solution moves beyond static, one-dimensional risk scoring. This approach enables dynamic analysis of interdependencies, threat vectors, and evolving risks, resulting in the generation of a multi-dimensional, adaptive risk score—the RBC-Index.

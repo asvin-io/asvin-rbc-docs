@@ -1,8 +1,7 @@
 API Endpoint Security
 =====================
 
-asvin components expose their services using RESTful API endpoints. They are secured using Jason Web Token(JWT). It is required to obtain a JWT from
-OAuth server. Only thereafter the endpoints can accessed successfully. The :ref:`Login` API endpoint is used to get JWT from OAuth. 
+asvin components expose their services using RESTful API endpoints. They are secured using Jason Web Token(JWT). It is required to obtain a JWT from OAuth server. Only thereafter the endpoints can accessed successfully. The :ref:`Login` API endpoint is used to get JWT from OAuth. 
 
 .. _Access Signature:
 

@@ -1,10 +1,7 @@
 ================
 Deployment Model
 ================
-Risk by Context™ supports both **On-Premise** and **SaaS** deployment model. Organizations can choose the 
-appropriate deployment model based on their specific requirements for data control, 
-scalability, and security. On-Premise Deployment provides full control over infrastructure 
-and security, SaaS Deployment offers a managed, scalable cloud-based solution,
+Risk by Context™ supports both **On-Premise** and **SaaS** deployment model. Organizations can choose the appropriate deployment model based on their specific requirements for data control, scalability, and security. On-Premise Deployment provides full control over infrastructure and security, SaaS Deployment offers a managed, scalable cloud-based solution,
 
 On-Premise Deployment
 ---------------------
@@ -35,9 +32,9 @@ Deployment steps
 
 #. Prepare the Environment
 
-  * Check if docker engine is installed with :code:`docker version & docker compose version`
+    * Check if docker engine is installed with :code:`docker version & docker compose version`
 
-  * Configure firewall rules and network security groups
+    * Configure firewall rules and network security groups
 
 #. Install RBC Components using :ref:`docker<start-using-docker>`  or :ref:`docker compose<start-using-docker-compose>` 
 

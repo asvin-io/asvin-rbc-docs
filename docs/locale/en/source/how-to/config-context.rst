@@ -2,11 +2,7 @@
 Config Contextual Parameters
 ============================
 
-The Risk by Context™ Frontend allows users to configure contextual parameters at both the 
-**segment** and **device** levels via the settings page. These parameters can significantly 
-impact the risk posture of an OT environment. Each parameter consists of three key 
-characteristics: **Visibility**, **Threshold**, and **Relevance**. Understanding and setting 
-these characteristics appropriately will allow for optimized risk assessment.
+The Risk by Context™ Frontend allows users to configure contextual parameters at both the *segment** and **device** levels via the settings page. These parameters can significantly impact the risk posture of an OT environment. Each parameter consists of three key characteristics: **Visibility**, **Threshold**, and **Relevance**. Understanding and setting these characteristics appropriately will allow for optimized risk assessment.
 
 This document provides a detailed guideline on how to set and configure these contextual parameters 
 efficiently.
@@ -24,15 +20,13 @@ When setting contextual parameters, you will need to configure the following cha
 - `any numeric value`: The highest acceptable value for the parameter.
 - `0`: The default value assigned when no specific configuration is set.
 
-3. **Relevance**: This characteristic defines the parameter’s relevance to the OT environment for risk assessment.
-It determines how important a parameter is in the RBC-Index calculation.
+3. **Relevance**: This characteristic defines the parameter’s relevance to the OT environment for risk assessment. It determines how important a parameter is in the RBC-Index calculation.
 - `100`: The parameter is highly relevant.
 - `0`: The parameter is not relevant.
 
 How to Set Contextual Parameters
 --------------------------------
-To set contextual parameters at the segment and device levels, follow the steps below. The Settings page 
-is user-friendly and offers intuitive GUI for configuration.
+To set contextual parameters at the segment and device levels, follow the steps below. The Settings page is user-friendly and offers intuitive GUI for configuration.
 
 .. raw:: html
 
@@ -43,16 +37,14 @@ is user-friendly and offers intuitive GUI for configuration.
 
 
 1. Access the Settings Page
-Navigate to the **Settings Page** from side menu by clicking on "Settings" where you can manage the 
-segment and device configurations. In the RBC interface, the **Settings** section typically 
-has two primary areas:
+Navigate to the **Settings Page** from side menu by clicking on "Settings" where you can manage the segment and device configurations. In the RBC interface, the **Settings** section typically has two primary areas:
 - **Segment Settings**: Parameters related to the network segments.
 - **Device Settings**: Parameters related to the devices in use.
 
 2. Select the Parameter
 Once you are on the settings page, find the parameter you wish to configure. .
 
-### Step 3: Modify the Characteristics of the Parameter
+3. Modify the Characteristics of the Parameter
 Each parameter will have an editable configuration section where you can set the 
 **Visibility**, **Threshold**, and **Relevance** characteristics.
 
@@ -63,8 +55,7 @@ b. Set Threshold: **Threshold** can typically be set using text input for numeri
 For example:
 - **CVSS Score (Threshold)**: Set the value to 10.
 
-c. Set Relevance: The **Relevance** slider allows you to specify how relevant the parameter is to the 
-RBC-Index of a segment or device configuration.
+c. Set Relevance: The **Relevance** slider allows you to specify how relevant the parameter is to the RBC-Index of a segment or device configuration.
 - **1oo**: The parameter is highly relevant.
 - **0**: The parameter is not relevant.
 For example:
@@ -101,8 +92,5 @@ Best Practices
 
 Conclusion
 ----------
-By following the above steps, you can efficiently set contextual parameters in Risk by Context™ at both the 
-segment and device levels. Understanding how to configure **Visibility**, **Threshold**, and 
-**Relevance** will ensure that parameters are properly adjusted according to the device or 
-segment conditions, providing a tailored experience for risk assessment for your OT environment.
+By following the above steps, you can efficiently set contextual parameters in Risk by Context™ at both the segment and device levels. Understanding how to configure **Visibility**, **Threshold**, and **Relevance** will ensure that parameters are properly adjusted according to the device or segment conditions, providing a tailored experience for risk assessment for your OT environment.
 
