@@ -20,7 +20,7 @@ Run docker images
 
 .. code-block:: sh
 
-  docker run --name asvin-rbc-fe -p 8080:80  -d asvin-rbc-frontend:<tag>
+  docker run --name asvin-rbc-portal -p 8080:80  -d asvin-rbc-portal:<tag>
   docker run --name asvin-rbc-device-service -p 5001:5001 -d asvin-rbc-device-service:<tag>
   docker run --name asvin-rbc-report-service -p 5002:5002 -d asvin-rbc-report-service:<tag>
   docker run --name asvin-rbc-mongo -p 27017:27017 -v $PWD/rbc-data/context:/data/db -d mongo:<tag>
@@ -36,8 +36,8 @@ Run docker images
 
       version: "3"
       services:
-        asvin-rbc-fe:
-          image: asvin-rbc-frontend:<tag>
+        asvin-rbc-portal:
+          image: asvin-rbc-portal:<tag>
           deploy:
             replicas: 1
           ports:
@@ -80,25 +80,25 @@ You can clone the Git repository and build the Risk by Context™ components fro
 
 Prerequisites
 ^^^^^^^^^^^^^
-- `git <https://git-scm.com/downloads>`_
+- `Git <https://git-scm.com/downloads>`_
 - `Node.js <https://git-scm.com/downloads>`_
 - `.NET SDK and .NET Runtime <https://learn.microsoft.com/en-us/dotnet/core/install/>`_
 
 Run binary
 ^^^^^^^^^^
-- Risk by Context™ Frontend
+- Risk by Context™ Portal
 
 .. code-block:: bash
 
-   git clone <rbc-frontend-git-repo>
+   git clone <rbc-portal-git-repo>
    npm i install
    npm start
 
-- Risk by Context™ Backend
+- Risk by Context™ Engine
 
 .. code-block:: bash
 
-   git clone <rbc-backend-git-repo>
+   git clone <rbc-engine-git-repo>
    dotnet build
    dotnet run
   
