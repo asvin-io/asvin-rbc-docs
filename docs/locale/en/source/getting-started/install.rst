@@ -31,47 +31,10 @@ Run docker images
 2. using docker composer
 
   * copy the `docker-compose.yaml` file
-
-    .. code-block:: yaml
-
-      version: "3"
-      services:
-        asvin-rbc-portal:
-          image: asvin-rbc-portal:<tag>
-          deploy:
-            replicas: 1
-          ports:
-          - "8080:80"
-        asvin-rbc-device-service:
-          image: asvin-rbc-device-service:<tag>
-          deploy:
-            replicas: 1
-          ports:
-            - "5001:5001"
-        asvin-rbc-report-service:
-          image: asvin-rbc-report-service:<tag>
-          deploy:
-            replicas: 1
-          ports:
-            - "5002:5002"
-        asvin-rbc-mongo:
-          image: mongo:<tag>
-          command: --dbpath /data/db
-          environment:
-            - MYSQL_RANDOM_ROOT_PASSWORD=yes
-            - MONGO_INITDB_ROOT_USERNAME=<user-name>
-            - MONGO_INITDB_ROOT_PASSWORD=<user-password>
-          volumes:
-            - ./rbc-data/context:/data/db
-          ports:
-            - "27017:27017"
-        asvin-rbc-neo4j:
-          image: ne04j:<tag>
-          volumes:
-            - ./rbc-data/graph:/data
-          ports:
-            - "7687:7687"
-            - "7474:7474"
+  
+    .. literalinclude:: ../snippet/asvin-rbc-docker-compose.yaml
+       :language: yaml
+       :linenos:
   * Start the containers with :code:`docker compose up -d`
 
 Build from source

@@ -1,0 +1,31 @@
+services:
+  asvin-rbc-portal:
+    image: asvin-rbc-portal:latest
+    deploy:
+      replicas: 1
+    ports:
+      - "8080:80"
+  asvin-rbc-device-service:
+    image: asvin-rbc-device-service:latest
+    deploy:
+      replicas: 1
+    ports:
+      - "5001:5001"
+  asvin-rbc-mongo:
+    image: mongo:6.0.6
+    command: --dbpath /data/db
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MONGO_INITDB_ROOT_USERNAME=<user-name>
+      - MONGO_INITDB_ROOT_PASSWORD=<user-password>
+    volumes:
+      - ./rbc-data/context:/data/db
+    ports:
+      - "27017:27017"
+  asvin-rbc-neo4j:
+    image: neo4j:latest
+    volumes:
+      - ./rbc-data/graph:/data
+    ports:
+      - "7687:7687"
+      - "7474:7474"
