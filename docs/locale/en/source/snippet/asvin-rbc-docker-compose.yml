@@ -5,23 +5,32 @@ services:
       replicas: 1
     ports:
       - "8080:80"
+    networks:
+      - asvin-rbc
   asvin-rbc-device-service:
     image: asvin-rbc-device-service:latest
     deploy:
       replicas: 1
+    environment:
+      - MongoConnection__ConnectionString=mongodb://changeusername:changemepassword@asvin-rbc-mongo:27017/?authSource=admin
+      - MongoConnection__Database=changedbname
+      - JsonWebTokenKeys__IssuerSigningKey="change-json-web-token-key"
     ports:
       - "5001:5001"
+    networks:
+      - asvin-rbc
   asvin-rbc-mongo:
     image: mongo:6.0.6
     command: --dbpath /data/db
     environment:
-      - MYSQL_RANDOM_ROOT_PASSWORD=yes
-      - MONGO_INITDB_ROOT_USERNAME=<user-name>
-      - MONGO_INITDB_ROOT_PASSWORD=<user-password>
+      - MONGO_INITDB_ROOT_USERNAME=changeusername
+      - MONGO_INITDB_ROOT_PASSWORD=changemepassword
     volumes:
       - ./rbc-data/context:/data/db
     ports:
       - "27017:27017"
+    networks:
+      - asvin-rbc
   asvin-rbc-neo4j:
     image: neo4j:latest
     volumes:
@@ -29,3 +38,10 @@ services:
     ports:
       - "7687:7687"
       - "7474:7474"
+    networks:
+      - asvin-rbc
+
+networks:
+  asvin-rbc:
+    name: asvin-rbc
+    driver: bridge
