@@ -30,7 +30,7 @@ Run docker images
 
 2. using docker composer
 
-  * copy the `docker-compose.yaml` file
+  * copy the `docker-compose.yml` file
   
     .. literalinclude:: ../snippet/asvin-rbc-docker-compose.yml
        :language: yaml
