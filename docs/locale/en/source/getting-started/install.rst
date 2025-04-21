@@ -32,7 +32,7 @@ Run docker images
 
   * copy the `docker-compose.yaml` file
   
-    .. literalinclude:: ../snippet/asvin-rbc-docker-compose.yaml
+    .. literalinclude:: ../snippet/asvin-rbc-docker-compose.yml
        :language: yaml
        :linenos:
   * Start the containers with :code:`docker compose up -d`
