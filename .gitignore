@@ -2,5 +2,7 @@ build/
 .vscode
 .git
 venv/
-docs/locale/en/source/_build/
-docs/locale/de/source/_build/
+**/_build/
+**/_build/
+.venv
+*.tar
