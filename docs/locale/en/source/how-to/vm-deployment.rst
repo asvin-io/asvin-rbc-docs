@@ -1,6 +1,10 @@
 ================
-Prerequisites
+On-premise Deployment
 ================
+
+Prerequisites
+---------------------
+
 Before proceeding with the setup, ensure the following requirements are met:
 
 Hardware Requirements
@@ -48,7 +52,7 @@ Download Files
       * docker-compose.yml file
 
 🛠️ Setup Guide: Importing the OVA File into VMware
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------------------------
 
   Follow the steps below to import the provided .ova file into your VMware application.
 
@@ -92,7 +96,7 @@ Please refer to the specific documentation or accompanying README.md if differen
 
 
 Post-Setup Verification
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------
 
 The virtual machine provided in the .ova file comes with the following software pre-installed and pre-configured:
 
@@ -117,7 +121,7 @@ docker compose version
 docker compose (with a space) is used in recent versions instead of the older docker-compose command.
 
 📥 Importing Docker Images into the VM
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------------
 
 You are provided with pre-built Docker images in a .tar format, you can load them into Docker inside the virtual machine using the docker load command.
 
@@ -150,7 +154,7 @@ Check the list of available Docker images:
 You should see the newly imported image listed.
 
 🚀 Starting the Application with Docker Compose
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------------------------
 
 The application is containerized and orchestrated using Docker Compose, which manages the frontend, backend, and database services.
 
