@@ -6,3 +6,4 @@ How to
 
    config-context
    deployment
+   vm-deployment
