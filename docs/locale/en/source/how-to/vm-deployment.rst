@@ -1,9 +1,9 @@
-================
+=====================
 On-premise Deployment
-================
+=====================
 
 Prerequisites
----------------------
+-------------
 
 Before proceeding with the setup, ensure the following requirements are met:
 
@@ -37,22 +37,22 @@ Administrative Access
 
 Download Files
 ^^^^^^^^^^^^^^^
-  * Ensure you have access to the following files
+Ensure you have access to the following files
 
     * virtual machine image (.ova)
 
-      * docker images
+    * docker images
 
-            Portal:  asvin-rbc-portal.tar
+        * Portal:  asvin-rbc-portal.tar
 
-            Backend: asvin-rbc-device-service.tar
+        * Backend: asvin-rbc-device-service.tar
 
-            Database: asvin-rbc-mongo.tar
+        * Database: asvin-rbc-mongo.tar
 
-      * docker-compose.yml file
+    * docker-compose.yml file
 
 🛠️ Setup Guide: Importing the OVA File into VMware
----------------------------------------------------------------
+---------------------------------------------------
 
   Follow the steps below to import the provided .ova file into your VMware application.
 
@@ -60,7 +60,7 @@ Download Files
 
 
 Launch VMware
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
 Open the VMware application:
 
   * On Windows/Linux: Open VMware Workstation or VMware Player.
@@ -68,11 +68,11 @@ Open the VMware application:
  
 Import the OVA File
 ^^^^^^^^^^^^^^^^^^^^
-    From the main menu, select File → Open.
+  * From the main menu, select File → Open.
 
-    Browse to the location of the .ova file provided (e.g., asvin-rbc.ova).
+  * Browse to the location of the .ova file provided (e.g., asvin-rbc.ova).
 
-    Select the .ova file and click Open.
+  * Select the .ova file and click Open.
 
     VMware will display an Import Virtual Machine window.
 
@@ -108,25 +108,29 @@ The virtual machine provided in the .ova file comes with the following software 
 
 You can verify the installation and check versions after starting the VM:
 
-🔍 To check Docker installation:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Open a terminal in the VM and run:
-  
-  docker --version
+🔍 To check Docker installation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Open a terminal in the VM and run
 
-🔍 To check Docker Compose:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-docker compose version
+.. code-block:: bash
+
+   docker --version
+
+🔍 To check Docker Compose
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: bash
+
+   docker compose version
 
 docker compose (with a space) is used in recent versions instead of the older docker-compose command.
 
 📥 Importing Docker Images into the VM
-------------------------------------------
+---------------------------------------
 
 You are provided with pre-built Docker images in a .tar format, you can load them into Docker inside the virtual machine using the docker load command.
 
 📁 Transfer the Docker Image Files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Ensure the image files (mentioned in Prerequisite section) are available inside the VM. You can:
 
   * Drag and drop the file into the VM (if supported by VMware).
@@ -136,13 +140,15 @@ Ensure the image files (mentioned in Prerequisite section) are available inside 
   * Use scp or USB devices as alternatives.
 
 🐳 Load the Image into Docker
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Once the .tar files are accessible inside the VM, open a terminal and run
 
-  cd <path-to-tar-files-folder>
-  docker load -i asvin-rbc-portal.tar
-  docker load -i asvin-rbc-device-service.tar
-  docker load -i asvin-rbc-mongo.tar
+.. code-block:: bash
+
+   cd <path-to-tar-files-folder>
+   docker load -i asvin-rbc-portal.tar
+   docker load -i asvin-rbc-device-service.tar
+   docker load -i asvin-rbc-mongo.tar
 
 ✅ Verify the Image is Loaded
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
