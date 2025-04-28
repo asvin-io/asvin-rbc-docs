@@ -31,18 +31,24 @@ Use standard `docker` commands if you prefer working directly with containers.
 
 .. _start-using-docker-compose:
 
-using docker composer
+using docker compose
 """""""""""""""""""""
-Use a `docker-compose.yml` file to manage services and dependencies automatically.
-  * copy the `docker-compose.yml` file
+Docker Compose offers a simpler way to start all containers simultaneously. All Risk by Context™ components are configured in the docker-compose.yml file, which also defines the port mappings and volume configurations for each service.
+
+  1. copy the `docker-compose.yml` file
   
     .. literalinclude:: ../snippet/asvin-rbc-docker-compose.yml
        :language: yaml
        :linenos:
-  * Start the containers with :code:`docker compose up -d`
+  
+  2. Start the containers with :code:`docker compose up -d`
+
+Access the Portal
+^^^^^^^^^^^^^^^^^
+Once the Portal container is running, you can access it at `<http://localhost:8080>`_.
 
 Building from source
------------------
+--------------------
 You can clone the Git repositories and build the Risk by Context™ components from source manually.
 
 Prerequisites
@@ -68,3 +74,5 @@ Build and Run
    git clone <rbc-engine-git-repo>
    dotnet build
    dotnet run
+
+- Then access the Portal at `<http://localhost:8080>`_.
