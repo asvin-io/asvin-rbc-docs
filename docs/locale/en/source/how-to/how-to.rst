@@ -5,5 +5,4 @@ How to
    :maxdepth: 1
 
    config-context
-   deployment
-   vm-deployment
+   deploy
