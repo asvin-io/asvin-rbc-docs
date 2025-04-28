@@ -1,6 +1,7 @@
-=====================
-On-premise Deployment
-=====================
+============================================
+On-premise Deployment using Preconfigured VM
+============================================
+asvin provides a preconfigured virtual machine (OVA file) that includes all the necessary components and software for Risk by Context™. This method is ideal for users who want to get started quickly without manual installation of dependencies.
 
 Prerequisites
 -------------
