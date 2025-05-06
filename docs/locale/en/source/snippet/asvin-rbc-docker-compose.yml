@@ -13,7 +13,7 @@ services:
       replicas: 1
     environment:
       - MongoConnection__ConnectionString=mongodb://changeusername:changemepassword@asvin-rbc-mongo:27017/?authSource=admin
-      - MongoConnection__Database=changedbname
+      - MongoConnection__Database=asvin_rbc
       - JsonWebTokenKeys__IssuerSigningKey="change-json-web-token-key"
     ports:
       - "5001:5001"
