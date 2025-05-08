@@ -77,6 +77,13 @@ Open the VMware application:
 
   * On Windows/Linux: Open VMware Workstation or VMware Player.
   * On macOS: Open VMware Fusion.
+
+.. raw:: html
+
+  <video width="710" autoplay muted loop>
+  <source src="../_static/videos/VM.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
  
 Import the OVA File
 ^^^^^^^^^^^^^^^^^^^^
@@ -224,9 +231,13 @@ You should see the newly imported image listed.
 
 
 🔧 Configuring Ports, Environment Variables and Volumes in Docker Compose
----------------------------------------
+------------------------------------------------------------------------------
 
 In the docker-compose.yml(Link)  file, you can easily configure port mappings, environment variables and volumes for the services.
+
+ .. literalinclude:: ../snippet/asvin-rbc-docker-compose.yml
+       :language: yaml
+       :linenos:
 
 #. Port Configuration
 
@@ -248,16 +259,16 @@ Use the environment field to set environment variables inside the container. The
 
 MongoDB 
 
-    MONGO_INITDB_ROOT_USERNAME: Specifies the username for the MongoDB root user.
-    MONGO_INITDB_ROOT_PASSWORD:Specifies the password for the MongoDB root user.
+    :code:`MONGO_INITDB_ROOT_USERNAME`: Specifies the username for the MongoDB root user.
+    :code:`MONGO_INITDB_ROOT_PASSWORD`:Specifies the password for the MongoDB root user.
 
     Device Service
 
-        MongoConnection__ConnectionString: Defines the full connection string used by the application to connect to the MongoDB server. It is defined in specific format, mongodb://username:passwrod@mongodb-host:mongodb-port/?authSource=admin
+        :code:`MongoConnection__ConnectionString`: Defines the full connection string used by the application to connect to the MongoDB server. It is defined in specific format, mongodb://username:passwrod@mongodb-host:mongodb-port/?authSource=admin
 
-        MongoConnection__Database: Specifies the name of the MongoDB database that the application will use.
+        :code:`MongoConnection__Database`: Specifies the name of the MongoDB database that the application will use.
 
-        JsonWebTokenKeys__IssuerSigningKey: Provides the secret key used to sign and validate JSON Web Tokens (JWTs) for authentication and authorization.
+        :code:`JsonWebTokenKeys__IssuerSigningKey`: Provides the secret key used to sign and validate JSON Web Tokens (JWTs) for authentication and authorization.
 
 #. Persistent volume configuration
 
@@ -280,7 +291,7 @@ Here, the path before the colon (./rbc-data/context) refers to the host machine 
 The application is containerized and orchestrated using Docker Compose, which manages the frontend, backend, and database services.
 
 📁 Navigate to the Project Directory
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Open a terminal inside the virtual machine and move to the directory where the docker-compose.yml file is located:
 
 .. code-block:: bash
@@ -322,7 +333,7 @@ Open a browser inside the VM or from the host (if port forwarding is enabled) an
 
 .. note::
 
-You can change the port in your docker-compose.yml.
+  You can change the port in your docker-compose.yml.
 
 🛑 Stopping the Application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -339,19 +350,29 @@ This will stop and clean up all running containers.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 MongoDB Compass is a graphical interface that allows you to easily connect to your database, explore collections, and run queries without using the command line. Follow the steps below to connect to your MongoDB instance.
+
+.. raw:: html
+
+  <video width="710" autoplay muted loop>
+  <source src="../_static/videos/mongodbsetup.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+
 #. Open MongoDB Compass
 
     Launch the MongoDB Compass application.
 
 #. Enter Connection Details
 
-In the New Connection window, fill in the following details:
+    In the New Connection window, fill in the following details:
+
+  .. code-block:: bash
 
     Connection String: mongodb://username:passwrod@mongodb-host:mongodb-port/?authSource=admin
 
 .. note:: 
 
-Replace the username, password, host and port accordingly. 
+    Replace the username, password, host and port accordingly. 
 
 #. Connect and Explore
 
