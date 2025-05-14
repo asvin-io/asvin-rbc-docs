@@ -7,18 +7,20 @@ services:
       - "8080:80"
     networks:
       - asvin-rbc
+    restart: unless-stopped
   asvin-rbc-device-service:
     image: asvin-rbc-device-service:latest
     deploy:
       replicas: 1
     environment:
       - MongoConnection__ConnectionString=mongodb://changeusername:changemepassword@asvin-rbc-mongo:27017/?authSource=admin
-      - MongoConnection__Database=asvin_rbc
+      - MongoConnection__Database=asvin_rbc_local
       - JsonWebTokenKeys__IssuerSigningKey="change-json-web-token-key"
     ports:
       - "5001:5001"
     networks:
       - asvin-rbc
+    restart: unless-stopped
   asvin-rbc-mongo:
     image: mongo:6.0.6
     command: --dbpath /data/db
@@ -31,15 +33,7 @@ services:
       - "27017:27017"
     networks:
       - asvin-rbc
-  asvin-rbc-neo4j:
-    image: neo4j:latest
-    volumes:
-      - ./rbc-data/graph:/data
-    ports:
-      - "7687:7687"
-      - "7474:7474"
-    networks:
-      - asvin-rbc
+    restart: unless-stopped
 
 networks:
   asvin-rbc:
