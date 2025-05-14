@@ -37,7 +37,7 @@ Docker Compose offers a simpler way to start all containers simultaneously. All 
 
   1. copy the `docker-compose.yml` file
   
-    .. literalinclude:: ../snippet/asvin-rbc-docker-compose.yml
+    .. literalinclude:: ../snippet/docker-compose.yml
        :language: yaml
        :linenos:
   
