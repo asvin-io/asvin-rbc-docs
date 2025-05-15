@@ -3,138 +3,123 @@ On-premise Deployment using Preconfigured VM
 ============================================
 asvin provides a preconfigured virtual machine (OVA file) that includes all the necessary components and software for Risk by Context™. This method is ideal for users who want to get started quickly without manual installation of dependencies.
 
-Prerequisites
--------------
+.. _preconfigured-vm-prerequisite:
+
+✅ Prerequisites
+----------------
 
 Before proceeding with the setup, ensure the following requirements are met:
 
 Hardware Requirements
----------------------
+^^^^^^^^^^^^^^^^^^^^^
   * A 64-bit x86/AMD64 CPU with virtualization support (Intel VT-x or AMD-V).
-
   * Minimum 2 GB RAM (4 GB or more recommended).
-
   * Minimum 50 GB free disk space.
-
   * 1.3GHz or faster core speed
 
-Operating System
-^^^^^^^^^^^^^^^^
-  * Compatible with Windows 10/11, macOS, or a recent Linux distribution.
-
-VMware Workstation / VMware Player
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  * Install VMware Workstation (Windows/Linux) or VMware Fusion (macOS).
-
-  * Ensure that your VMware product supports running .ova or .vmx files.
-
-Operating System
-^^^^^^^^^^^^^^^^
-  * Compatible with Windows 10/11, macOS, or a recent Linux distribution.
-
 Virtualization Support
-^^^^^^^^^^^^^^^^^^^^^^^
-  * Make sure virtualization is enabled in BIOS/UEFI.
-
-Administrative Access
 ^^^^^^^^^^^^^^^^^^^^^^
-  * You must have administrator privileges to install and run VMware and configure network interfaces if needed.
+Make sure virtualization is enabled in BIOS/UEFI.
+
+.. warning::
+  Secure Boot may interfere with the proper functioning of VMware or prevent some virtual machines from starting. If you experience issues, consider disabling Secure Boot in your system BIOS/UEFI settings.
+
+Operating System
+^^^^^^^^^^^^^^^^
+Compatible with Windows 10/11 or a recent Linux distribution.
+  
+.. note::
+  You must have administrator privileges to install and run VMware and configure network interfaces if needed.
 
 VMware Workstation / VMware Player
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  * Install VMware Workstation or Fusion.
-
+  * Install `VMware Workstation or Fusion <https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion>`_.
   * Ensure that your VMware product supports running .ova  files.
 
 Download Files
 ^^^^^^^^^^^^^^^
-Ensure you have access to the following files
+Ensure you have access to the following files.
 
-    * virtual machine image (.ova)
-
-    * docker images
-
-        * Portal:  asvin-rbc-portal.tar
-
-        * Backend: asvin-rbc-device-service.tar
-
-        * Database: asvin-rbc-mongo.tar
-
-    * docker-compose.yml file
+  * asivn rbc virtual machine image (.ova)
+  * docker images
+      * Portal:  asvin-rbc-portal.tar
+      * Backend: asvin-rbc-device-service.tar
+      * Database: asvin-rbc-mongo.tar
+  * docker-compose.yml file
 
 🛠️ Setup Guide: Importing the OVA File into VMware
 ---------------------------------------------------
 
-  Follow the steps below to import the provided .ova file into your VMware application.
+Follow the steps below to import the provided .ova file into your VMware application.
 
 .. note::
-  Please install all the required tools and download images as described in Prerequisite setup.
-
+  Please install all the required tools and download images as described in :ref:`Prerequisites <preconfigured-vm-prerequisite>` setup.
 
 Launch VMware
 ^^^^^^^^^^^^^
 Open the VMware application:
 
-  * On Windows/Linux: Open VMware Workstation or VMware Player.
-  * On macOS: Open VMware Fusion.
+* On Windows/Linux: Open VMware Workstation or VMware Player.
+
+Import the OVA File
+^^^^^^^^^^^^^^^^^^^^
+#. From the main menu, select :code:`File` → :code:`Open`.
+#. Browse to the location of the .ova file.
+#. Select the .ova file and click :code:`Open`.
+#. VMware will display an Import Virtual Machine window.
+#. Choose a name and destination folder for the virtual machine.
+#. Click Import to begin the process.
 
 .. raw:: html
 
   <video width="710" autoplay muted loop>
-  <source src="../_static/videos/VM.mp4" type="video/mp4">
+  <source src="../_static/videos/rbc-vm-import.mp4" type="video/mp4">
   Your browser does not support the video tag.
   </video>
- 
-Import the OVA File
-^^^^^^^^^^^^^^^^^^^^
-#. From the main menu, select File → Open.
 
-#. Browse to the location of the .ova file provided (e.g., asvin-rbc.ova).
-
-#. Select the .ova file and click Open.
-
-#. VMware will display an Import Virtual Machine window.
-
-#. Choose a name and destination folder for the virtual machine.
-
-#. Click Import to begin the process.
-
-.. note::
-  💡 This may take a few minutes depending on the size of the OVA and the performance of your system.
+.. hint::
+  This may take a few minutes depending on the size of the OVA and the performance of your system.
 
 Power On the VM
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 Once the import completes:
 
-  * The VM will appear in your VM library.
-
+  * The VM will appear in your VMware library.
   * Select the virtual machine and click Power on this virtual machine.
 
+If you experience issues with the display size or resolution in your virtual machine, you can easily fix it by adjusting the settings.
+
+  * Open :code:`Settings` in the VM 
+  * Go to: Display
+  * Change Orientation, Resoution, and Scale as required.
+
+.. image:: ../images/vm/display-settings-ubuntu.jpg
+   :alt: Display settings
+
 Login Information
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
 Please refer to the specific documentation or accompanying README.md if different credentials or setup scripts are provided.
 
 
-Post-Setup Verification
-------------------------
+🔍 Post-Setup Verification
+--------------------------
 
 The virtual machine provided in the .ova file comes with the following software pre-installed and pre-configured:
 
-✅ Docker & Docker Compose
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Docker & Docker Compose
+^^^^^^^^^^^^^^^^^^^^^^^
 
   * Docker is installed to support containerized applications.
-
   * Docker Compose is available to orchestrate multi-container services.
 
-.. note::
+.. hint::
   Installed version of docker is 28.1.1 and docker compose v2.35.1
 
 You can verify the installation and check versions after starting the VM:
 
 🔍 To check Docker installation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Open a terminal in the VM and run
+"""""""""""""""""""""""""""""""
+Open the :term:`Terminal` in the VM and run
 
 .. code-block:: bash
 
@@ -147,12 +132,14 @@ You will see output like:
    Docker version 28.1.1, build 4eba377
 
 🔍 To check Docker Compose
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""
+Run following command in the :term:`Terminal`. 
+
 .. code-block:: bash
 
    docker compose version
 
-.. note::
+.. hint::
   docker compose (with a space) is used in recent versions instead of the older docker-compose command.
 
 You will see output like:
@@ -162,40 +149,84 @@ You will see output like:
    Docker Compose version v2.35.1
 
 MongoDB Compass
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 It provides a user-friendly interface to visualize, query, and manage MongoDB databases. It simplifies database interaction by eliminating the need for manual command-line operations.
 
-.. note::
+.. hint::
   The pre-installed version of the MongoDB Compass is 1.40.4
 
 🔍 Check MongoDB Compass
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 
   * Open MongoDB Compass from the Applications menu.
-
   * Verify that the application launches successfully.
 
+.. raw:: html
+
+  <video width="710" autoplay muted loop>
+  <source src="../_static/videos/open-mongo-compass.m4v" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+
+OpenSSH Server
+^^^^^^^^^^^^^^
+OpenSSH Server allows you to securely access and manage your system remotely via SSH (Secure Shell). It enables encrypted communication and remote terminal access over the network.
+
+🔍 To check SSH Server installation
+"""""""""""""""""""""""""""""""""""
+Open a :term:`Terminal` in the VM and run following command.
+
+.. code-block:: bash
+
+   sudo systemctl status ssh
+
+You will see output like:
+
+.. code-block:: bash
+
+   ● ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)
+     Active: active (running) since Wed 2025-05-14 09:23:29 CEST; 5min ago
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+    Process: 892 ExecStartPre=/usr/sbin/sshd -t (code=exited, status=0/SUCCESS)
+   Main PID: 913 (sshd)
+      Tasks: 1 (limit: 4549)
+     Memory: 3.0M
+        CPU: 21ms
+     CGroup: /system.slice/ssh.service
+             └─913 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+
 📥 Importing Docker Images into the VM
----------------------------------------
+--------------------------------------
 
 You are provided with pre-built Docker images in a .tar format, you can load them into Docker inside the virtual machine using the docker load command.
 
 📁 Transfer the Docker Image Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Ensure the image files (mentioned in Prerequisite section) are available inside the VM. You can:
+Ensure the image files mentioned in :ref:`Prerequisites <preconfigured-vm-prerequisite>` section are available inside the VM. You can:
 
   * Drag and drop the file into the VM (if supported by VMware).
+  
+  .. raw:: html
+
+    <video width="710" autoplay muted loop>
+    <source src="../_static/videos/drag-drop.m4v" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
 
   * Use shared folders to transfer from host to VM.
+  
+    #. Select your virtual machine in the VMWare library and right click on it.  
+    #. Go to Settings → Options → Shared Folders
+    #. Select :code:`Always enabled` and click on :code:`+ Add..`
+    #. In the pop-up enter name and browser the folder on host machine that you want to share
 
-  * Use scp or USB devices as alternatives.
+    .. image:: ../images/vm/shared-folder.jpg
+       :alt: Display settings
 
-      * check status
-
-      .. code-block:: bash
-        
-         sudo systemctl status ssh
-      
+  * Use scp
+  * Use USB devices as alternatives.
 
 🐳 Load the Image into Docker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -208,8 +239,24 @@ Once the .tar files are accessible inside the VM, open a terminal and run
    docker load -i asvin-rbc-device-service.tar
    docker load -i asvin-rbc-mongo.tar
 
-✅ Verify the Image is Loaded
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+It will give the output as shown below.
+
+.. code-block:: bash
+   
+   f4111324080c: Loading layer [==================================================>]   7.35MB/7.35MB
+   5fa2288e0d6e: Loading layer [==================================================>]  5.316MB/5.316MB
+   419b89bbfa3b: Loading layer [==================================================>]  3.584kB/3.584kB
+   08761a690f84: Loading layer [==================================================>]  4.608kB/4.608kB
+   439be94dd989: Loading layer [==================================================>]  3.584kB/3.584kB
+   66afb7c3e6d1: Loading layer [==================================================>]  7.168kB/7.168kB
+   7388ed75460c: Loading layer [==================================================>]  30.21MB/30.21MB
+   98681f27b172: Loading layer [==================================================>]  3.584kB/3.584kB
+   521f489e8210: Loading layer [==================================================>]  7.372MB/7.372MB
+   Loaded image: asvin-rbc-portal:latest
+
+
+✅ Verify the Images are Loaded
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Check the list of available Docker images:
 
@@ -217,7 +264,7 @@ Check the list of available Docker images:
 
   docker images
 
-You will see output like this:
+You should see the newly imported image listed as shown below:
 
 .. code-block:: bash
 
@@ -227,54 +274,48 @@ You will see output like this:
   mongo                      6.0.6     7e32c3979b02   22 months ago   653MB
 
 
-You should see the newly imported image listed.
-
-
 🔧 Configuring Ports, Environment Variables and Volumes in Docker Compose
-------------------------------------------------------------------------------
+-------------------------------------------------------------------------
 
-In the docker-compose.yml(Link)  file, you can easily configure port mappings, environment variables and volumes for the services.
+In the :code:`docker-compose.yml` file, you can easily configure port mappings, environment variables and volumes for the services.
 
- .. literalinclude:: ../snippet/asvin-rbc-docker-compose.yml
+ .. literalinclude:: ../snippet/docker-compose.yml
        :language: yaml
        :linenos:
 
-#. Port Configuration
-
-Use the ports field to map a port inside the container to a port on your virtual machine. The format is <host_port>:<container_port>. By default the service run on following ports.
+Port Configuration
+^^^^^^^^^^^^^^^^^^
+Use the ports field to map a port inside the container to a port on your virtual machine. The format is :code:`<vm_port>:<container_port>`. By default the services run on following ports.
 
   * Portal : 8080
-
   * Device Service: 5001
-
   * MongoDB: 27001
 
-#. Environment Variable Configuration
-
+Environment Variable Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Use the environment field to set environment variables inside the container. The environments variables are to used to configure the services. The configuration for various services are following.
 
 .. note::
   
   Change the default username and password for MongoDB root user before deploying the application.
 
-MongoDB 
+MongoDB
+"""""""
+  * :code:`MONGO_INITDB_ROOT_USERNAME`: Specifies the username for the MongoDB root user.
+  * :code:`MONGO_INITDB_ROOT_PASSWORD`:Specifies the password for the MongoDB root user.
 
-    :code:`MONGO_INITDB_ROOT_USERNAME`: Specifies the username for the MongoDB root user.
-    :code:`MONGO_INITDB_ROOT_PASSWORD`:Specifies the password for the MongoDB root user.
+Device Service
+""""""""""""""
 
-    Device Service
+  * :code:`MongoConnection__ConnectionString`: Defines the full connection string used by the application to connect to the MongoDB server. It is defined in specific format, :code:`mongodb://username:passwrod@mongodb-host:mongodb-port/?authSource=admin`
+  * :code:`MongoConnection__Database`: Specifies the name of the MongoDB database that the application will use.
+  * :code:`JsonWebTokenKeys__IssuerSigningKey`: Provides the secret key used to sign and validate JSON Web Tokens (JWTs) for authentication and authorization.
 
-        :code:`MongoConnection__ConnectionString`: Defines the full connection string used by the application to connect to the MongoDB server. It is defined in specific format, mongodb://username:passwrod@mongodb-host:mongodb-port/?authSource=admin
-
-        :code:`MongoConnection__Database`: Specifies the name of the MongoDB database that the application will use.
-
-        :code:`JsonWebTokenKeys__IssuerSigningKey`: Provides the secret key used to sign and validate JSON Web Tokens (JWTs) for authentication and authorization.
-
-#. Persistent volume configuration
-
+Persistent volume configuration
+"""""""""""""""""""""""""""""""
 To ensure that MongoDB data remains persistent across container restarts, a Docker volume is configured for storage. This prevents data loss when containers are recreated, updated, or stopped.
 
-The volume is defined under the volumes section of the docker-compose.yml file. By default, the database files are stored inside a local folder named rbc-data, located in the same directory as the Compose file.
+The volume is defined under the volumes section of the :code:`docker-compose.yml` file. By default, the database files are stored inside a local folder named :code:`rbc-data`, located in the same directory as the Compose file.
 
 You can customize the storage location by modifying the following line in the Compose file:
 
@@ -283,52 +324,66 @@ You can customize the storage location by modifying the following line in the Co
   volumes:
         - ./rbc-data/context:/data/db
 
-Here, the path before the colon (./rbc-data/context) refers to the host machine directory, and /data/db is the internal path inside the MongoDB container where the data is stored.
+Here, the path before the colon :code:`./rbc-data/context` refers to the host machine directory, and /data/db is the internal path inside the MongoDB container where the data is stored.
 
 🚀 Starting the Application with Docker Compose
----------------------------------------------------------------
-
+-----------------------------------------------
 The application is containerized and orchestrated using Docker Compose, which manages the frontend, backend, and database services.
 
 📁 Navigate to the Project Directory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Open a terminal inside the virtual machine and move to the directory where the docker-compose.yml file is located:
+Open the :term:`Terminal` inside the virtual machine and move to the directory where the docker-compose.yml file is located:
 
 .. code-block:: bash
 
-  cd ~/project-directory 
+  cd ~/asvin-rbc
 
 🧱 Start the Application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Use the following command to build (if needed) and start all services:
+^^^^^^^^^^^^^^^^^^^^^^^^
+Use the following command to start all services:
   
 .. code-block:: bash
   
   docker compose up -d
- 
+
 
 * -d runs the services in the background (detached mode).
 
-* Docker Compose will automatically:
+The command will produce output similar to the following example:
 
-  * Start the Portal (Angular)
+.. code-block:: bash
 
-  * Start the device service (.NET)
+  [+] Running 4/4
+   ✔ Network asvin-rbc                         Created
+   ✔ Container rbc-asvin-rbc-portal-1          Started
+   ✔ Container rbc-asvin-rbc-mongo-1           Started
+   ✔ Container rbc-asvin-rbc-device-service-1  Started
 
-  * Start the database (MongoDB)
+Docker Compose will automatically start containers for:
+  * Portal
+  * Device service
+  * MongoDB database
 
 🔍 Verify Running Containers
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Check the status of all services:
 
 .. code-block:: bash
 
-  docker compose ps
+  docker compose ps -a
 
-You should see the containers for portal, devicee service, and database marked as Up.
+You should see the containers for portal, devicee service, and database marked as Up. Executing the command yields output resembling the example below:
+
+.. code-block:: bash
+   
+   [+] Running 4/4
+    ✔ Container rbc-asvin-rbc-mongo-1           Removed
+    ✔ Container rbc-asvin-rbc-portal-1          Removed
+    ✔ Container rbc-asvin-rbc-device-service-1  Removed
+    ✔ Network asvin-rbc                         Removed 
 
 🌐 Access the Portal
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 Open a browser inside the VM or from the host (if port forwarding is enabled) and go to: http://localhost:8080
 
 .. note::
@@ -336,48 +391,53 @@ Open a browser inside the VM or from the host (if port forwarding is enabled) an
   You can change the port in your docker-compose.yml.
 
 🛑 Stopping the Application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To stop all services when you're done:
+To stop all services when you are done:
 
 .. code-block:: bash
 
   docer compose down
 
-This will stop and clean up all running containers.
+This will stop and clean up all running containers. The output would be similar as below:
+
+.. code-block:: bash
+   
+   [+] Running 4/4
+    ✔ Container rbc-asvin-rbc-mongo-1           Removed 
+    ✔ Container rbc-asvin-rbc-portal-1          Removed
+    ✔ Container rbc-asvin-rbc-device-service-1  Removed
+    ✔ Network asvin-rbc                         Removed
+
 
 🖥️ Connecting to MongoDB Using MongoDB Compass
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 MongoDB Compass is a graphical interface that allows you to easily connect to your database, explore collections, and run queries without using the command line. Follow the steps below to connect to your MongoDB instance.
 
 .. raw:: html
 
   <video width="710" autoplay muted loop>
-  <source src="../_static/videos/mongodbsetup.mp4" type="video/mp4">
+  <source src="../_static/videos/mongo-db-connect.m4v" type="video/mp4">
   Your browser does not support the video tag.
   </video>
 
 #. Open MongoDB Compass
 
-    Launch the MongoDB Compass application.
+    - Launch the MongoDB Compass application.
 
+#. Click on :code:`+Add new connection`
 #. Enter Connection Details
 
-    In the New Connection window, fill in the following details:
+    - In the New Connection window, fill in the connection string used in :code:`docker-compose.yml` to URI in format :code:`mongodb://username:password@mongodb-host:mongodb-port/?authSource=admin`
 
-  .. code-block:: bash
+    .. note:: 
 
-    Connection String: mongodb://username:passwrod@mongodb-host:mongodb-port/?authSource=admin
+        Replace the username, password, host and port accordingly. 
 
-.. note:: 
-
-    Replace the username, password, host and port accordingly. 
+    - Enter the connection name
 
 #. Connect and Explore
 
-    Click Connect to establish the connection.
-
-    Once connected, you will see a list of databases on the left sidebar.
-
-    Select your database (e.g., rbc) to view its collections and documents.
+    - Click Connect to establish the connection.
+    - Once connected, you will see a list of databases on the left sidebar.
+    - Select your database (e.g., :code:`asvin_rbc_local`) to view its collections and documents.

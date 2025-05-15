@@ -11,3 +11,6 @@ Risk by Context™ provides a glossary to ensure a clear and consistent understa
 
     Contextual Data
       Contextual data refers to information that enhances risk assessment by incorporating relevant environmental and situational factors. In RBC, contextual data includes elements such as network segment size, operational significance, and business continuity plans helping to understand context of devices in a OT environment to assess and prioritize their cyber security risks.
+    
+    Terminal
+      An application that provides a command-line interface (CLI), allowing users to interact with the operating system by entering and executing text-based commands.
