@@ -397,7 +397,7 @@ To stop all services when you are done:
 
 .. code-block:: bash
 
-  docer compose down
+   docer compose down
 
 This will stop and clean up all running containers. The output would be similar as below:
 
@@ -441,3 +441,20 @@ MongoDB Compass is a graphical interface that allows you to easily connect to yo
     - Click Connect to establish the connection.
     - Once connected, you will see a list of databases on the left sidebar.
     - Select your database (e.g., :code:`asvin_rbc_local`) to view its collections and documents.
+
+🔄 Update RBC Application
+-------------------------
+#. Copy updated docker images to the vm.
+#. Import the docker images. For example if you have received new version of RBC Portal image :code:`asvin-rbc-portal.tar`, you can import it using following command in :term:`Terminal`.
+
+   .. code-block:: bash
+
+     docker load -i asvin-rbc-portal.tar
+
+#. Restart RBC containers
+
+   .. code-block:: bash
+
+     docker compose down
+     docker compose up -d
+
