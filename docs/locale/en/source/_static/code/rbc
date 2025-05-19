@@ -1,0 +1,164 @@
+#!/bin/bash
+# -----------------------------------------------------------------------------
+# Risk by Context™ Commnad Utility Script
+# -----------------------------------------------------------------------------
+# Copyright (c) 2025 asvin GmbH
+
+# Default values
+verbose=false
+output=""
+file=""
+
+# Help message
+usage() {
+  echo "Usage: $0 [OPTIONS] COMMAND [ARGS]"
+  echo ""
+  echo "Options:"
+  echo "  -h            Show this help message"
+  echo "  -v            Enable verbose mode"
+  echo ""
+  echo "Commands:"
+  echo "  load <name>        Load docker images by name. Options:"
+  echo "                            : Load all images"
+  echo "                   - portal : The Portal"
+  echo "                   - device : The Device service"
+  echo "                   - mongo  : The MongoDB"
+  echo "  up <name>          Create and start docker containers. Options:"
+  echo "                            : Restart all containers"
+  echo "                   - portal : The Portal"
+  echo "                   - device : The Device service"
+  echo "                   - mongo  : The MongoDB"
+  echo "  down <name>        Stop and remove docker contianers. Options:"
+  echo "                            : Restart all containers"
+  echo "                   - portal : The Portal"
+  echo "                   - device : The Device service"
+  echo "                   - mongo  : The MongoDB"
+  echo "  restart <name>     Remove and create docker containers. Options:"
+  echo "                            : Restart all containers"
+  echo "                   - portal : The Portal"
+  echo "                   - device : The Device service"
+  echo "                   - mongo  : The MongoDB"
+  echo ""
+  echo "  Example:"
+  echo "    ./rbc load portal"
+  echo "    ./rbc start device"
+  echo "    ./rbc restart"
+  exit 1
+}
+
+# Verbose logging
+log() {
+  if $verbose; then
+    echo "[DEBUG] $1"
+  fi
+}
+
+# Command: load
+load() {
+  name="$1"
+  if [ -z "$name" ]; then
+    docker load -i asvin-rbc-portal.tar
+    docker load -i asvin-rbc-device-service.tar
+    docker load -i asvin-rbc-mongo.tar
+  elif [ "$name" == "portal" ]; then
+    docker load -i asvin-rbc-portal.tar
+  elif [ "$name" == "device" ]; then
+    docker load -i asvin-rbc-device-service.tar
+  elif [ "$name" == "mongo" ]; then
+    docker load -i asvin-rbc-mongo.tar
+  else 
+    echo "Unknow image name"
+  fi
+}
+
+# Command: start
+up() {
+  name="$1"
+  if [ -z "$name" ]; then
+    docker compose up -d
+  elif [ "$name" == "portal" ]; then
+    docker compose up asvin-rbc-portal -d
+  elif [ "$name" == "device" ]; then
+    docker compose up asvin-rbc-device-service -d
+  elif [ "$name" == "mongo" ]; then
+    docker compose up asvin-rbc-mongo -d
+  else 
+    echo "Unknow service name"
+  fi
+}
+
+# Command: stop
+down() {
+  name="$1"
+  if [ -z "$name" ]; then
+    docker compose down
+  elif [ "$name" == "portal" ]; then
+    docker compose down asvin-rbc-portal
+  elif [ "$name" == "device" ]; then
+    docker compose down asvin-rbc-device-service
+  elif [ "$name" == "mongo" ]; then
+    docker compose down asvin-rbc-mongo
+  else
+    echo "Unknow service name"
+  fi
+}
+
+# Command: restart
+restart() {
+  name="$1"
+  if [ -z "$name" ]; then
+    docker compose down && docker compose up -d
+  elif [ "$name" == "portal" ]; then
+    docker compose down asvin-rbc-portal && docker compose up asvin-rbc-portal -d
+  elif [ "$name" == "device" ]; then
+    docker compose down asvin-rbc-device-service && docker compose up asvin-rbc-device-service -d
+  elif [ "$name" == "mongo" ]; then
+    docker compose down asvin-rbc-mongo &&  docker compose up asvin-rbc-mongo -d
+  else 
+    echo "Unknow service name"
+  fi
+}
+
+# Command: upgrade
+upgrade() {
+  load "$@"
+  restart "$@"
+}
+
+# Parse options
+while getopts "hv" opt; do
+  case $opt in
+    h) usage ;;
+    v) verbose=true ;;
+    *) usage ;;
+  esac
+done
+
+# Shift positional arguments
+shift $((OPTIND - 1))
+
+# Check if command is provided
+command="$1"
+shift || true
+
+case "$command" in
+  load)
+    load "$@"
+    ;;
+  up)
+    up "$@"
+    ;;
+  down)
+    down "$@"
+    ;;
+  restart)
+    restart "$@"
+    ;;
+  upgrade)
+    upgrade "$@"
+    ;;
+  *)
+    echo "Unknown or missing command: $command"
+    usage
+    ;;
+esac
