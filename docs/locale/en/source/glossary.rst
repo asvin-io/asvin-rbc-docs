@@ -11,6 +11,30 @@ Risk by Context™ provides a glossary to ensure a clear and consistent understa
 
     Contextual Data
       Contextual data refers to information that enhances risk assessment by incorporating relevant environmental and situational factors. In RBC, contextual data includes elements such as network segment size, operational significance, and business continuity plans helping to understand context of devices in a OT environment to assess and prioritize their cyber security risks.
-    
+
+    Docker Container
+      A runtime instance of a Docker image. Managed in the :term:`RBC CLI` using `start`, `stop`, and `restart` commands.
+
+    Docker Image
+      A lightweight, standalone, and executable package that includes everything needed to run a piece of software. Used in the :term:`RBC CLI` via the `load` command.
+
+    Device Service
+      The backend mirco-servic written in .NET framework responsible for locations, segments and devices in the RBC ecosystem.
+
+    MongoDB
+      A NoSQL database used by the RBC platform to store and retrieve data. Runs in a container and is managed via the utility.
+
+    Portal
+      The main web interface or frontend of the RBC platform. Can be started or stopped using the RBC utility.
+
+    RBC CLI
+      A custom Bash-based command-line tool to manage Docker images and containers for the RBC platform, including services like Portal, Device, and MongoDB. You can download the utility from :download:`here <_static/code/rbc>`. For usage instructions, refer to the :doc:`RBC CLI Reference <getting-started/rbc-cli>`.
+
     Terminal
       An application that provides a command-line interface (CLI), allowing users to interact with the operating system by entering and executing text-based commands.
+    
+    
+
+    
+
+    
