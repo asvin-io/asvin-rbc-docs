@@ -7,3 +7,4 @@ Getting Started
 
    system-requirements
    install
+   rbc-cli

@@ -1,7 +1,7 @@
 ========================
 Install Risk by Context™
 ========================
-This section provides instructions for installing Risk by Context™ using Pre-built Docker images and from source.
+This section provides instructions for installing Risk by Context™ using pre-built Docker images and from source.
 
 Using Pre-built Docker images
 -----------------------------
@@ -9,12 +9,12 @@ asvin provides docker images for Risk by Context™ to run in containers. It is 
 
 Prerequisites
 ^^^^^^^^^^^^^
-- `Docker <https://docs.docker.com/engine/install/>`_
-- `Docker compose <https://docs.docker.com/compose/>`_
-- Ubuntu, Mac or Windows with WS2
+- Install `Docker <https://docs.docker.com/engine/install/>`_
+- Install `Docker compose <https://docs.docker.com/compose/>`_
+- Operating system Ubuntu, Mac or Windows with WS2
 
-Run docker images
-^^^^^^^^^^^^^^^^^
+Create and Start Containers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. _start-using-docker:
 
 using docker CLI
@@ -35,13 +35,17 @@ using docker compose
 """""""""""""""""""""
 Docker Compose offers a simpler way to start all containers simultaneously. All Risk by Context™ components are configured in the docker-compose.yml file, which also defines the port mappings and volume configurations for each service.
 
-  1. copy the `docker-compose.yml` file
-  
-    .. literalinclude:: ../snippet/docker-compose.yml
-       :language: yaml
-       :linenos:
+  1. Download the :download:`docker-compose.yml <../_static/code/docker-compose.yml>` file
   
   2. Start the containers with :code:`docker compose up -d`
+
+using RBC CLI
+"""""""""""""
+Start all containers with a :term:`RBC CLI` command.
+
+.. code::
+
+   /.rbc up
 
 Access the Portal
 ^^^^^^^^^^^^^^^^^

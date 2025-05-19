@@ -45,11 +45,11 @@ Ensure you have access to the following files.
       * Portal:  asvin-rbc-portal.tar
       * Backend: asvin-rbc-device-service.tar
       * Database: asvin-rbc-mongo.tar
-  * docker-compose.yml file
+  * :download:`docker-compose.yml <../_static/code/docker-compose.yml>`
+  * :download:`RBC command line utility <../_static/code/rbc>`
 
 🛠️ Setup Guide: Importing the OVA File into VMware
 ---------------------------------------------------
-
 Follow the steps below to import the provided .ova file into your VMware application.
 
 .. note::
@@ -303,11 +303,7 @@ You should see the newly imported image listed as shown below:
 🔧 Configuring Ports, Environment Variables and Volumes in Docker Compose
 -------------------------------------------------------------------------
 
-In the :code:`docker-compose.yml` file, you can easily configure port mappings, environment variables and volumes for the services.
-
- .. literalinclude:: ../snippet/docker-compose.yml
-       :language: yaml
-       :linenos:
+In the :download:`docker-compose.yml <../_static/code/docker-compose.yml>` file, you can easily configure port mappings, environment variables and volumes for the services.
 
 Port Configuration
 ^^^^^^^^^^^^^^^^^^
@@ -341,7 +337,7 @@ Persistent volume configuration
 """""""""""""""""""""""""""""""
 To ensure that MongoDB data remains persistent across container restarts, a Docker volume is configured for storage. This prevents data loss when containers are recreated, updated, or stopped.
 
-The volume is defined under the volumes section of the :code:`docker-compose.yml` file. By default, the database files are stored inside a local folder named :code:`rbc-data`, located in the same directory as the Compose file.
+The volume is defined under the volumes section of the :download:`docker-compose.yml <../_static/code/docker-compose.yml>` file. By default, the database files are stored inside a local folder named :code:`rbc-data`, located in the same directory as the Compose file.
 
 You can customize the storage location by modifying the following line in the Compose file:
 
@@ -362,7 +358,7 @@ Open the :term:`Terminal` inside the virtual machine and move to the directory w
 
 .. code-block:: bash
 
-  cd ~/asvin-rbc
+  cd ~/rbc
 
 🧱 Start the Application
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -421,9 +417,16 @@ Open a browser inside the VM or from the host (if port forwarding is enabled) an
 
 To stop all services when you are done:
 
-.. code-block:: bash
+* using :term:`RBC CLI`
 
-   docer compose down
+  .. code-block:: bash
+
+     ./rbc down
+* using docker CLI
+
+  .. code-block:: bash
+
+    docer compose down
 
 This will stop and clean up all running containers. The output would be similar as below:
 
@@ -470,19 +473,38 @@ MongoDB Compass is a graphical interface that allows you to easily connect to yo
 
 🔄 Update RBC Application
 -------------------------
-#. Copy updated docker images to the vm.
+#. Copy updated docker images to the VM.
 #. Import the docker images. For example if you have received new version of RBC Portal image :code:`asvin-rbc-portal.tar`, you can import it using following command in :term:`Terminal`.
 
-   .. code-block:: bash
-
-     docker load -i asvin-rbc-portal.tar
+   * using :term:`RBC CLI`
+ 
+     .. code-block:: bash
+ 
+        ./rbc load portal
+ 
+   * using docker CLI
+ 
+     .. code-block:: bash
+ 
+        docker load -i asvin-rbc-portal.tar
 
 #. Restart RBC containers
 
-   .. code-block:: bash
+   * using :term:`RBC CLI`
 
-     docker compose down
-     docker compose up -d
+     .. code-block:: bash
+
+        ./rbc restart
+
+   * using docker CLI
+
+     .. code-block:: bash
+
+        docker compose down
+        docker compose up -d
+
+.. tip::
+  You can perform step 2 and 3 using :code:`./rbc upgrade` command.
 
 📥 Data Import
 --------------
@@ -516,9 +538,7 @@ Location Import
 
 CSV Requirements:
 
-* Must include a :code:`Name`
-* This must be imported before Segments or Devices
-
+* Must include a :code:`Name`.
 
 Segment Import
 ^^^^^^^^^^^^^^
@@ -532,8 +552,8 @@ Segment Import
 
 CSV Requirements:
 
-* Must include a :code:`Network`, :code:`NetworkGroup`, :code:`NetworkAddress`, :code:`NetworkLocation` and :code:'NetworkLocationId'
-* This must be imported after Locations and before Devices
+* Must include a :code:`Network`, :code:`NetworkGroup`, :code:`NetworkAddress`, :code:`NetworkLocation` and :code:`NetworkLocationId``.
+* This must be imported after Locations.
 
 
 Device Import
@@ -548,7 +568,7 @@ Device Import
 
 CSV Requirements:
 
-* Must include a unique :code:`DeviceId`, :code:`DeviceRef`
+* Must include a unique :code:`DeviceId`, :code:`DeviceRef`.
 * This must be imported after Locations and Segments
 
 
