@@ -208,24 +208,50 @@ Ensure the image files mentioned in :ref:`Prerequisites <preconfigured-vm-prereq
 
   * Drag and drop the file into the VM (if supported by VMware).
   
-  .. raw:: html
+    .. raw:: html
 
-    <video width="710" autoplay muted loop>
-    <source src="../_static/videos/drag-drop.m4v" type="video/mp4">
-    Your browser does not support the video tag.
-    </video>
+      <video width="710" autoplay muted loop>
+      <source src="../_static/videos/drag-drop.m4v" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
 
   * Use shared folders to transfer from host to VM.
   
     #. Select your virtual machine in the VMWare library and right click on it.  
-    #. Go to Settings → Options → Shared Folders
+    #. Go to :code:`Settings` → :code:`Options` → :code:`Shared Folders`
     #. Select :code:`Always enabled` and click on :code:`+ Add..`
-    #. In the pop-up enter name and browser the folder on host machine that you want to share
+    #. In the pop-up enter name and browser the folder on host machine that you want to share.
 
-    .. image:: ../images/vm/shared-folder.jpg
-       :alt: Display settings
+       .. image:: ../images/vm/shared-folder.jpg
+         :alt: Display settings
 
   * Use scp
+  
+    #. Power on the VM and find the ip address. You can use :code:`ifconfig` command in the :term:`Terminal`. It will show all network interfaces on the VM. Find the ip address of the wired-connnection interface. It should have output similar to following.
+
+       .. code-block:: bash 
+       
+          ens33: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+                  inet 192.168.191.132  netmask 255.255.255.0  broadcast 192.168.191.255
+                  inet6 fe80::1f5c:9967:9286:455b  prefixlen 64  scopeid 0x20<link>
+                  ether 00:0c:29:06:b8:04  txqueuelen 1000  (Ethernet)
+                  RX packets 420  bytes 406105 (406.1 KB)
+                  RX errors 0  dropped 0  overruns 0  frame 0
+                  TX packets 357  bytes 50224 (50.2 KB)
+                  TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+    
+    #. Open a :term:`Terminal` in your host machine and run following command.
+
+       .. code-block:: bash
+       
+          scp <path-of-file> otadmin@ip-address:<path-where-to-copy>
+ 
+       For an example if you want to copy :code:`asvin-rbc-portal.tar` file to `~/rbc` folder in the VM then use following command.
+ 
+       .. code-block:: bash
+ 
+          scp -o PubkeyAuthentication=no asvin-rbc-portal.tar otadmin@192.168.191.132:rbc/
+
   * Use USB devices as alternatives.
 
 🐳 Load the Image into Docker
@@ -457,4 +483,78 @@ MongoDB Compass is a graphical interface that allows you to easily connect to yo
 
      docker compose down
      docker compose up -d
+
+📥 Data Import
+--------------
+The RBC Portal allows you to manually import data for Locations, Segments, and Devices using CSV files. To begin, navigate to the :code:`Imports` page from the sidebar menu.
+
+📊 Supported Data Types
+
+#. Location
+#. Segment
+#. Device
+
+These data types follow a hierarchical structure: Location → Segment → Device
+
+.. warning::
+   
+   You must import data in the correct order. Attempting to import a lower-level entity (e.g., a Device) before its parent (e.g., its Segment or Location) will result in an error.
+
+.. note::
+
+   Ensure your CSV files are formatted correctly according to the provided templates for each type.
+
+Location Import
+^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+  <video width="710" autoplay muted loop>
+  <source src="../_static/videos/location-import.m4v" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+
+CSV Requirements:
+
+* Must include a :code:`Name`
+* This must be imported before Segments or Devices
+
+
+Segment Import
+^^^^^^^^^^^^^^
+
+.. raw:: html
+
+  <video width="710" autoplay muted loop>
+  <source src="../_static/videos/segment-import.m4v" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+
+CSV Requirements:
+
+* Must include a :code:`Network`, :code:`NetworkGroup`, :code:`NetworkAddress`, :code:`NetworkLocation` and :code:'NetworkLocationId'
+* This must be imported after Locations and before Devices
+
+
+Device Import
+^^^^^^^^^^^^^
+
+.. raw:: html
+
+  <video width="710" autoplay muted loop>
+  <source src="../_static/videos/device-import.m4v" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+
+CSV Requirements:
+
+* Must include a unique :code:`DeviceId`, :code:`DeviceRef`
+* This must be imported after Locations and Segments
+
+
+
+
+
+
+
 
