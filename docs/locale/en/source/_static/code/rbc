@@ -119,6 +119,55 @@ restart() {
   fi
 }
 
+# Command: snapshot
+snapshot() {
+  #!/bin/bash
+  set -a           # export all variables
+  source .env
+  set +a
+  set -e
+
+  BASE_API_URL="${RBC_API_URL}"
+  USERNAME="${RBC_USER_EMAIL}"
+  PASSWORD="${RBC_USER_PASSWORD}"
+
+  if [[ -z "$USERNAME" || -z "$PASSWORD" ]]; then
+    echo "Login variables not provided!"
+    exit 1
+  fi
+
+  # Get access token
+  token_response=$(curl -s -X POST "$BASE_API_URL/Token" \
+    -H "Content-Type: application/json" \
+    -d "{\"username\": \"$USERNAME\", \"password\": \"$PASSWORD\"}")
+
+  token=$(echo "$token_response" | jq -r '.Token')
+
+  if [[ "$token" == "null" || -z "$token" ]]; then
+    echo "Error generating access token!"
+    echo "$token_response"
+    exit 1
+  fi
+
+  echo "Token generation successful."
+
+  # Create snapshots
+  for typ in segment facility location; do
+    snapshot_response=$(curl -s -X POST "$BASE_API_URL/Snapshot/$typ" \
+      -H "Authorization: Bearer $token")
+
+    success=$(echo "$snapshot_response" | jq -r '.IsSuccess')
+
+    if [[ "$success" == "true" ]]; then
+      echo "$typ snapshot created successfully: $success"
+    else
+      echo "Error snapshot creation for $typ!"
+      echo "$snapshot_response"
+    fi
+  done
+}
+
+
 # Command: upgrade
 upgrade() {
   load "$@"
@@ -156,6 +205,9 @@ case "$command" in
     ;;
   upgrade)
     upgrade "$@"
+    ;;
+  snapshot)
+    snapshot
     ;;
   *)
     echo "Unknown or missing command: $command"
