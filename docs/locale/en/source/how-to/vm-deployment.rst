@@ -538,7 +538,11 @@ Location Import
 
 CSV Requirements:
 
-* Must include a :code:`Name`.
+* Must include a :code:`Name` and :code:`Coordinates`.
+
+.. warning::
+  The coordinate for the location must be provided in [longitude, latitude] format. Using any other order may lead to incorrect geospatial processing.
+
 
 Segment Import
 ^^^^^^^^^^^^^^
