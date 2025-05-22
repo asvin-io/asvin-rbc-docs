@@ -18,7 +18,10 @@ Options
   Show this help message and exit.
 
 * ``-v``  
-  Enable verbose mode.
+  Show version.
+
+* ``-d``  
+  Enable debug mode.
 
 Commands
 --------
@@ -34,8 +37,14 @@ Supported values:
 * ``device`` : Load the Device service image
 * ``mongo``  : Load the MongoDB image
 
+
+**ps**
+^^^^^^
+Show status of all RBC containers.
+
+
 **up <name>**
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
 Create and start Docker containers.
 
 Supported values:

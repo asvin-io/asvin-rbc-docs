@@ -260,10 +260,16 @@ Once the .tar files are accessible inside the VM, open a terminal and run
 
 .. code-block:: bash
 
-   cd <path-to-tar-files-folder>
-   docker load -i asvin-rbc-portal.tar
-   docker load -i asvin-rbc-device-service.tar
-   docker load -i asvin-rbc-mongo.tar
+   ./rbc load
+
+.. Note::
+   This command user :code:`docker load` command to load all RBC images. You can load them manually using following commands.
+   
+   .. code-block:: bash 
+
+      docker load -i asvin-rbc-portal.tar
+      docker load -i asvin-rbc-device-service.tar
+      docker load -i asvin-rbc-mongo.tar
 
 It will give the output as shown below.
 
@@ -366,10 +372,7 @@ Use the following command to start all services:
   
 .. code-block:: bash
   
-  docker compose up -d
-
-
-* -d runs the services in the background (detached mode).
+  ./rbc up
 
 The command will produce output similar to the following example:
 
@@ -392,7 +395,7 @@ Check the status of all services:
 
 .. code-block:: bash
 
-  docker compose ps -a
+  ./rbc ps
 
 You should see the containers for portal, devicee service, and database marked as Up. Executing the command yields output resembling the example below:
 
@@ -415,7 +418,7 @@ Open a browser inside the VM or from the host (if port forwarding is enabled) an
 🛑 Stopping the Application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To stop all services when you are done:
+To stop all RBC containers:
 
 * using :term:`RBC CLI`
 
@@ -471,40 +474,48 @@ MongoDB Compass is a graphical interface that allows you to easily connect to yo
     - Once connected, you will see a list of databases on the left sidebar.
     - Select your database (e.g., :code:`asvin_rbc_local`) to view its collections and documents.
 
-🔄 Update RBC Application
--------------------------
+🔄 Upgrade RBC Application
+--------------------------
+
 #. Copy updated docker images to the VM.
-#. Import the docker images. For example if you have received new version of RBC Portal image :code:`asvin-rbc-portal.tar`, you can import it using following command in :term:`Terminal`.
+#. Upgrade the RBC containers. 
 
-   * using :term:`RBC CLI`
+   .. code-block:: bash
  
-     .. code-block:: bash
+      ./rbc upgrade
+
+   Congratulations, you have successfully upgraded the RBC applications. Under the hood the command loads the docker images, removes the containers, creates and starts them again. 
+   
+   If you are interested to do it manualy you can follow guidelines below. 
+   
+   #. Load the image. For example if you have received new version of RBC Portal image :code:`asvin-rbc-portal.tar`, you can import it using following command in :term:`Terminal`.
+
+      * using :term:`RBC CLI`
+    
+        .. code-block:: bash
+    
+           ./rbc load portal
+    
+      * using docker CLI
+    
+        .. code-block:: bash
+    
+           docker load -i asvin-rbc-portal.tar
+
+   #. Once the docker images are loaded you can restart them: 
+
+      * using :term:`RBC CLI`
  
-        ./rbc load portal
+        .. code-block:: bash
  
-   * using docker CLI
+           ./rbc restart
  
-     .. code-block:: bash
+      * using docker CLI
  
-        docker load -i asvin-rbc-portal.tar
-
-#. Restart RBC containers
-
-   * using :term:`RBC CLI`
-
-     .. code-block:: bash
-
-        ./rbc restart
-
-   * using docker CLI
-
-     .. code-block:: bash
-
-        docker compose down
-        docker compose up -d
-
-.. tip::
-  You can perform step 2 and 3 using :code:`./rbc upgrade` command.
+        .. code-block:: bash
+ 
+           docker compose down
+           docker compose up -d
 
 📥 Data Import
 --------------
