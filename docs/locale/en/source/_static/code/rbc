@@ -5,9 +5,8 @@
 # Copyright (c) 2025 asvin GmbH
 
 # Default values
-verbose=false
-output=""
-file=""
+debug=false
+version="Risk by Context™ CLI version 1.0"
 
 # Help message
 usage() {
@@ -15,7 +14,8 @@ usage() {
   echo ""
   echo "Options:"
   echo "  -h            Show this help message"
-  echo "  -v            Enable verbose mode"
+  echo "  -d            Enable debug mode"
+  echo "  -v            Show version of the RBC CLI"
   echo ""
   echo "Commands:"
   echo "  load <name>        Load docker images by name. Options:"
@@ -59,7 +59,7 @@ usage() {
 
 # Verbose logging
 log() {
-  if $verbose; then
+  if $debug; then
     echo "[DEBUG] $1"
   fi
 }
@@ -186,10 +186,14 @@ upgrade() {
 }
 
 # Parse options
-while getopts "hv" opt; do
+while getopts "hvd" opt; do
   case $opt in
     h) usage ;;
-    v) verbose=true ;;
+    v) 
+      echo "${version}" 
+      exit 0
+      ;;
+    d) debug=true ;;
     *) usage ;;
   esac
 done
