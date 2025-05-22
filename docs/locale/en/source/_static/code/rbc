@@ -23,18 +23,29 @@ usage() {
   echo "                   - portal : The Portal"
   echo "                   - device : The Device service"
   echo "                   - mongo  : The MongoDB"
+  echo ""
+  echo "  ps                 Show status of all RBC containers"
+  echo ""
   echo "  up <name>          Create and start docker containers. Options:"
   echo "                            : Restart all containers"
   echo "                   - portal : The Portal"
   echo "                   - device : The Device service"
   echo "                   - mongo  : The MongoDB"
+  echo ""
   echo "  down <name>        Stop and remove docker contianers. Options:"
   echo "                            : Restart all containers"
   echo "                   - portal : The Portal"
   echo "                   - device : The Device service"
   echo "                   - mongo  : The MongoDB"
+  echo ""
   echo "  restart <name>     Remove and create docker containers. Options:"
   echo "                            : Restart all containers"
+  echo "                   - portal : The Portal"
+  echo "                   - device : The Device service"
+  echo "                   - mongo  : The MongoDB"
+  echo ""
+  echo "  upgrade <name>     Load docker images and restart containers. Options:"
+  echo "                            : Upgrade all containers"
   echo "                   - portal : The Portal"
   echo "                   - device : The Device service"
   echo "                   - mongo  : The MongoDB"
@@ -193,6 +204,9 @@ shift || true
 case "$command" in
   load)
     load "$@"
+    ;;
+  ps)
+    docker compose ps -a
     ;;
   up)
     up "$@"
