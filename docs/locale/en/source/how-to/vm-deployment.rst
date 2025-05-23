@@ -262,8 +262,12 @@ Once the .tar files are accessible inside the VM, open a terminal and run
 
    ./rbc load
 
+.. note::
+
+   If you encounter any errors while using the :code:`./rbc`, please refer to the :ref:`rbc-cli-errors` section for troubleshooting.
+
 .. Note::
-   This command user :code:`docker load` command to load all RBC images. You can load them manually using following commands.
+   This command uses :code:`docker load` command to load all RBC images. You can load them manually using following commands.
    
    .. code-block:: bash 
 
@@ -364,7 +368,7 @@ Open the :term:`Terminal` inside the virtual machine and move to the directory w
 
 .. code-block:: bash
 
-  cd ~/rbc
+   cd ~/rbc
 
 🧱 Start the Application
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -372,7 +376,11 @@ Use the following command to start all services:
   
 .. code-block:: bash
   
-  ./rbc up
+   ./rbc up
+
+.. note::
+
+   If you encounter any errors while using the :code:`./rbc`, please refer to the :ref:`rbc-cli-errors` section for troubleshooting.
 
 The command will produce output similar to the following example:
 
@@ -396,6 +404,10 @@ Check the status of all services:
 .. code-block:: bash
 
   ./rbc ps
+
+.. note::
+
+   If you encounter any errors while using the :code:`./rbc`, please refer to the :ref:`rbc-cli-errors` section for troubleshooting.
 
 You should see the containers for portal, devicee service, and database marked as Up. Executing the command yields output resembling the example below:
 
@@ -425,6 +437,11 @@ To stop all RBC containers:
   .. code-block:: bash
 
      ./rbc down
+
+  .. note::
+
+     If you encounter any errors while using the :code:`./rbc`, please refer to the :ref:`rbc-cli-errors` section for troubleshooting.
+
 * using docker CLI
 
   .. code-block:: bash
@@ -483,6 +500,10 @@ MongoDB Compass is a graphical interface that allows you to easily connect to yo
    .. code-block:: bash
  
       ./rbc upgrade
+
+   .. note::
+
+      If you encounter any errors while using the :code:`./rbc`, please refer to the :ref:`rbc-cli-errors` section for troubleshooting.
 
    Congratulations, you have successfully upgraded the RBC applications. Under the hood the command loads the docker images, removes the containers, creates and starts them again. 
    

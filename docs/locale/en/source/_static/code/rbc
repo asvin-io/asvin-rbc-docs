@@ -186,7 +186,7 @@ upgrade() {
 }
 
 # Parse options
-while getopts "hvd" opt; do
+while getopts ":hvd" opt; do
   case $opt in
     h) usage ;;
     v) 
@@ -194,9 +194,24 @@ while getopts "hvd" opt; do
       exit 0
       ;;
     d) debug=true ;;
-    *) usage ;;
+    \?)
+      echo "$0: unrecognized option: '$OPTARG' in ${!OPTIND}" >&2
+      echo ""
+      echo "Usage:  $0 [OPTIONS] COMMAND [ARGS]"
+      echo ""
+      echo "Run '$0 -h' for more information"
+      exit 1
+      ;;
+    # *) usage ;;
   esac
 done
+
+verify_compose_file(){
+  if [[ ! -f "docker-compose.yml" ]]; then
+    echo "$0: docker-compose.yml not found." >&2
+    exit 1
+  fi
+}
 
 # Shift positional arguments
 shift $((OPTIND - 1))
@@ -210,25 +225,32 @@ case "$command" in
     load "$@"
     ;;
   ps)
+    verify_compose_file
     docker compose ps -a
     ;;
   up)
+    verify_compose_file
     up "$@"
     ;;
   down)
+    verify_compose_file
     down "$@"
     ;;
   restart)
+    verify_compose_file
     restart "$@"
     ;;
   upgrade)
+    verify_compose_file
     upgrade "$@"
     ;;
   snapshot)
     snapshot
     ;;
   *)
-    echo "Unknown or missing command: $command"
-    usage
+    echo "$0: unknown command: $command"
+    echo ""
+    echo "Run '$0 -h' for more information"
+    exit 1
     ;;
 esac

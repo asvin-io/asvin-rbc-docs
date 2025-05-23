@@ -4,6 +4,21 @@ RBC CLI Utility
 
 A Bash utility script to manage Risk by Context™ solution containers.
 
+Prerequisites
+-------------
+
+Before using the :code:`rbc` CLI utility, ensure the following dependencies are installed and properly configured on your system:
+
+- **Docker**: Required to manage and run containerized applications.
+- **Docker Compose**: Needed for defining and running multi-container Docker applications.
+
+Make sure both Docker and Docker Compose are accessible from your command line before proceeding. You can verify using following commands.
+
+.. code-block:: bash
+
+   docker version
+   docker compose version
+
 Usage
 -----
 
@@ -26,6 +41,14 @@ Options
 Commands
 --------
 
+.. warning::
+
+   Ensure that the :code:`docker-compose.yml` file exists in the directory where you run the :code:`ps`, :code:`up`, :code:`down`, :code:`restart` and :code:`upgrade` commands.
+
+.. warning::
+
+   The :code:`./rbc load` command depends on the presence of the required ``.tar`` files. If these files are missing, the command will fail to load the Docker images.
+
 **load <name>**
 ^^^^^^^^^^^^^^^
 Load Docker images by name.
@@ -37,10 +60,10 @@ Supported values:
 * ``device`` : Load the Device service image
 * ``mongo``  : Load the MongoDB image
 
-
 **ps**
 ^^^^^^
 Show status of all RBC containers.
+
 
 
 **up <name>**
@@ -95,3 +118,38 @@ Examples
    ./rbc load portal
    ./rbc up device
    ./rbc restart
+
+.. _rbc-cli-errors:
+
+Common Errors
+-------------
+
+.. error::
+
+   ./rbc: No such file or directory
+
+   This error occurs when the :code:`rbc` file does not exist in the current directory. You can fix this by downloading the file from :download:`here <../_static/code/rbc>`.
+
+.. error::
+
+   bash: ./rbc: Permission denied
+
+   This error occurs when the file lacks execute permissions. You can fix this by running :code:`chmod +x rbc`.
+
+.. error::
+
+   ./rbc: unrecognized option: --foo
+
+   This error means you passed an invalid option. Run :code:`rbc -h` to see all supported options.
+
+.. error::
+
+   ./rbc: unrecognized command: --foo
+
+   This error means you passed an invalid command. Run :code:`rbc -h` to see all supported commands.
+
+.. error::
+
+   ./rbc docker-compose.yml not found.
+
+   This error occurs when the :code:`docker-compose.yml` file is missing from the current directory. You can download the it from :download:`here <../_static/code/docker-compose.yml>`
