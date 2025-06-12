@@ -244,7 +244,7 @@ Ensure the image files mentioned in :ref:`Prerequisites <preconfigured-vm-prereq
 
        .. code-block:: bash
        
-          scp <path-of-file> otadmin@ip-address:<path-where-to-copy>
+          scp -o PubkeyAuthentication=no <path-of-file> otadmin@ip-address:<path-where-to-copy>
  
        For an example if you want to copy :code:`asvin-rbc-portal.tar` file to `~/rbc` folder in the VM then use following command.
  
@@ -495,6 +495,17 @@ MongoDB Compass is a graphical interface that allows you to easily connect to yo
 --------------------------
 
 #. Copy updated docker images to the VM.
+
+   .. note::
+
+     Ensure that the file names strictly follow the specified naming convention:
+
+     * :code:`asvin-rbc-portal.tar`
+     * :code:`asvin-rbc-device-service.tar`
+     * :code:`asvin-rbc-mongo.tar`
+
+     These exact file names are required for correct processing. Avoid any deviations in spelling, case, or file extension.
+
 #. Upgrade the RBC containers. 
 
    .. code-block:: bash
