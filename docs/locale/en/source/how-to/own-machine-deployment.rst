@@ -3,27 +3,27 @@
 On-Premise deployment on Own Machine
 ====================================
 
-This method describes how to manually install and configure all required components for Risk by Context™ on a physical or virtual machine. It is recommended for users who require greater flexibility, customization, or wish to integrate the system into existing infrastructure.
-
-asvin provides pre-built docker images for Risk by Context™ to run in containers.
+This method describes how to manually install and configure all required components for Risk by Context™ on a physical or virtual machine. It is recommended for users who require greater flexibility, customization, or wish to integrate the system into existing infrastructure. asvin provides pre-built docker images for Risk by Context™ to run in containers.
 
 System Requirements
 -------------------
+This section contains information about software and hardware requirements for installation of Risk by Context™ solution.
+
 Hardware
 ^^^^^^^^
-  * 2 GHz dual-core processor
-  * 3D acceleration-capable GPU with at least 256 MB of VRAM
-  * 4 GB RAM (Recommended 8 GB or more)
+
+  * 4-core CPU
+  * 4 GB RAM (Recommended 8 GB or more for smoother performance)
   * 50 GB hard-drive space
 
 Software
 ^^^^^^^^
-To install Risk by Context™  successfully, your machine must meet the following software requirements.
+To install Risk by Context™ successfully, your machine must meet the following software requirements.
 
 Operating System
 """"""""""""""""
     
-* Ubuntu 22.04 LTS
+* Ubuntu
 
   * Ubuntu 22.04, 24.04, or the latest non-LTS version.
   * 64-bit kernel and CPU support for virtualization.
@@ -39,6 +39,9 @@ Operating System
 
 Containerization technology: 
 """"""""""""""""""""""""""""
+.. warning::
+   Docker can bypass firewall rules set by ufw or firewalld when exposing container ports. Review `Docker’s firewall behavior <https://docs.docker.com/engine/network/packet-filtering-firewalls/#docker-and-ufw>`_ before installing.
+
 Install `Docker Engine <https://docs.docker.com/engine/install/>`_ or `Docker Desktop <https://docs.docker.com/desktop/>`_. 
 
 Deployment steps
@@ -46,7 +49,9 @@ Deployment steps
 .. note::
    Check with your IT administrator for network security configuration before the deployment.
 
-#. Check if docker engine is installed with :code:`docker version & docker compose version` and you are able to run :code:`docker run hello-world` without errors.
-#. Run RBC containers :ref:`using docker<start-using-docker>`  or :ref:`using docker compose<start-using-docker-compose>` 
-#. Verify if containers are running with :code:`docker ps -a` or :code:`docker compose ps -a`
-#. Access the Risk by Context™ Portal in your browser at `http://localhost:8080 <http://localhost:8080/>`_
+.. note::
+   Check if docker is installed with :code:`docker version & docker compose version` and you can run :code:`docker run hello-world` without errors. 
+ 
+#. Run RBC containers :ref:`using RBC CLI<start-using-rbc>`, :ref:`using docker compose<start-using-docker-compose>` or :ref:`using docker<start-using-docker>`  
+#. Verify if containers are running with :code:`./rbc ps`, :code:`docker compose ps -a` or :code:`docker ps -a`
+#. Access the :term:`RBC Portal` in your browser at `http://localhost:8080 <http://localhost:8080/>`_

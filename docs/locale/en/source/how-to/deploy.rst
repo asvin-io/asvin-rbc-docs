@@ -6,10 +6,10 @@ Risk by Context™ supports both **On-Premise** and **SaaS** deployment model. O
 
 This section describes two different methods for installing Risk by Context™ on your infrastructure.
 
-- :doc:`own-machine-deployment`: Recommended for users who want a quick and hassle-free setup with all required software already installed.
-- :doc:`vm-deployment`: Recommended for users who prefer to install and configure the system manually on their physical or virtual machines.
+- :doc:`own-machine-deployment`: Recommended for users who prefer to install and configure the system manually on their physical or virtual machine.
+- :doc:`vm-deployment`: Recommended for users who want a quick and hassle-free setup with all required software already installed.
 
-Choose the method that best fits your environment and proceed with the corresponding instructions.
+Choose the method that best fits your environment and follow the corresponding instructions.
 
 .. toctree::
    :maxdepth: 1

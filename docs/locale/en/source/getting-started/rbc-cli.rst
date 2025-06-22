@@ -7,12 +7,12 @@ A Bash utility script to manage Risk by Context™ solution containers.
 Prerequisites
 -------------
 
-Before using the :code:`rbc` CLI utility, ensure the following dependencies are installed and properly configured on your system:
+Before using the :term:`RBC CLI` utility, ensure the following dependencies are installed and properly configured on your system:
 
 - **Docker**: Required to manage and run containerized applications.
 - **Docker Compose**: Needed for defining and running multi-container Docker applications.
 
-Make sure both Docker and Docker Compose are accessible from your command line before proceeding. You can verify using following commands.
+Make sure both Docker and Docker Compose are accessible from your command line before proceeding. You can verify using the following commands.
 
 .. code-block:: bash
 
@@ -41,6 +41,8 @@ Options
 Commands
 --------
 
+The :term:`RBC CLI` provides a set of commands to manage and operate RBC containers efficiently.
+
 .. warning::
 
    Ensure that the :code:`docker-compose.yml` file exists in the directory where you run the :code:`ps`, :code:`up`, :code:`down`, :code:`restart` and :code:`upgrade` commands.
@@ -63,7 +65,6 @@ Supported values:
 **ps**
 ^^^^^^
 Show status of all RBC containers.
-
 
 
 **up <name>**
@@ -118,38 +119,55 @@ Examples
    ./rbc load portal
    ./rbc up device
    ./rbc restart
+   ./rbc upgrade
 
 .. _rbc-cli-errors:
 
 Common Errors
 -------------
 
-.. error::
+.. tip::
+   
+   If this section doesn not resolve your issue, feel free to create a new issue in the `asvin RBC repository <https://github.com/asvin-io/asvin-rbc-docs/issues>`_ or contact us at :code:`info@asvin.io`.
 
-   ./rbc: No such file or directory
+Below are common errors you might encounter while using the :term:`RBC CLI` utility.
 
-   This error occurs when the :code:`rbc` file does not exist in the current directory. You can fix this by downloading the file from :download:`here <../_static/code/rbc>`.
+.. error:: `./rbc: No such file or directory`
 
-.. error::
+   This error occurs when the :code:`rbc` file does not exist in the current directory.
+   
+   **Solution:**
 
-   bash: ./rbc: Permission denied
+   Download the :term:`RBC CLI` from :download:`here <../_static/code/rbc>`.
 
-   This error occurs when the file lacks execute permissions. You can fix this by running :code:`chmod +x rbc`.
+.. error:: `bash: ./rbc: Permission denied`
 
-.. error::
+   This error occurs when the file lacks execute permissions. You can fix 
+   
+   **Solution:**
 
-   ./rbc: unrecognized option: --foo
+   Provide execute permission by running :code:`chmod +x rbc` in :term:`Terminal`.
 
-   This error means you passed an invalid option. Run :code:`rbc -h` to see all supported options.
+.. error:: `./rbc: unrecognized option: --foo`
 
-.. error::
+   This error means you passed an invalid option.
 
-   ./rbc: unrecognized command: --foo
+   **Solution:**
+   
+   Run :code:`./rbc -h` to see all supported options.
 
-   This error means you passed an invalid command. Run :code:`rbc -h` to see all supported commands.
+.. error:: `./rbc: unrecognized command: --foo`
 
-.. error::
+   This error means you passed an invalid command.
+   
+   **Solution:**
 
-   ./rbc docker-compose.yml not found.
+   Run :code:`./rbc -h` to see all supported commands.
 
-   This error occurs when the :code:`docker-compose.yml` file is missing from the current directory. You can download the it from :download:`here <../_static/code/docker-compose.yml>`
+.. error:: `./rbc docker-compose.yml not found.`
+
+   This error occurs when the :code:`docker-compose.yml` file is missing from the current directory. 
+   
+   **Solution:**
+
+   Download the file from :download:`here <../_static/code/docker-compose.yml>`

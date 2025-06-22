@@ -1,8 +1,7 @@
 ======================
 Risk by Context™ Model
 ======================
-
-In this section we will take a brief look at Risk by Context™ architecture and briefly explain its components. Some relevant concepts and keywords are also mentioned below.
+The Risk-by-Context™ architecture is a modular, data-driven system purpose-built to support advanced OT risk management through real-time contextual analysis. It comprises a layered architecture that includes a web-based frontend for interactive risk visualization, a scalable backend API layer for orchestrating services, a graph-based data store for managing cyber risk relationships, and a powerful analytics engine for computing the dynamic RBC-Index. The system leverages modern microservices principles to ensure scalability, maintainability, and loose coupling between components. Central to its design is the cyber risk knowledge graph, which integrates diverse contextual signals—such as business impact, network segmentation, and operational dependencies—allowing the analytics engine to continuously recalculate risk scores based on live data. This architecture enables seamless integration with external data sources (e.g., asset inventories, vulnerability feeds, BCP systems), supports real-time notifications, and offers RESTful APIs for downstream systems.
 
     .. image:: ../images/rbc-arch.png
         :alt: Risk by Context™ architecture
@@ -16,7 +15,7 @@ The Risk by Context™ Portal, developed using TypeScript and the Angular framew
 
 One of Risk by Context™ key strengths is its graph-based visualization engine, which dynamically maps the relationships between assets, threats, and vulnerabilities. This capability reveals the hidden interdependencies within the OT network, exposing potential attack paths and systemic risks that traditional list-based approaches fail to capture. By leveraging advanced risk modeling, the system provides context-aware risk prioritization at three critical levels: location, network segment, and device.
 
-The platform also integrates real-time threat intelligence and historical risk trends, enablings ecurity teams to make informed, data-driven decisions. Through an adaptive and visually-driven  approach, Risk by Context™ transforms complex OT risk landscapes into actionable insights, empowering organizations to enhance cyber resilience, reduce downtime, and protect critical operations effectively.
+The platform also integrates real-time threat intelligence and historical risk trends, enabling security teams to make informed, data-driven decisions. Through an adaptive and visually driven approach, Risk by Context™ transforms complex OT risk landscapes into actionable insights, empowering organizations to enhance cyber resilience, reduce downtime, and protect critical operations effectively.
 
 Risk by Context™ Engine
 -------------------------
@@ -29,10 +28,10 @@ Designed with a microservices architecture, the Engine ensures high availability
 
 Context Database
 ----------------
-The Context Database architecture is designed to efficiently manage large-scale, context-rich OT data,leveraging a hybrid approach with MongoDB (NoSQL) and Neo4j (graph database) to support the Engine’s microservices framework. Both databases run in Docker containers, ensuring high availability, scalability, and fault tolerance while seamlessly integrating with Risk by Context™’s risk analysis engine.
+The Context Database architecture is designed to efficiently manage large-scale, context-rich OT data,leveraging a hybrid approach with MongoDB (NoSQL) and Neo4j (graph database) to support the Engine’s microservices framework. Both databases run in Docker containers, ensuring high availability, scalability, and fault tolerance while seamlessly integrating with the risk analysis Engine.
 
 MongoDB serves as the primary storage for unstructured contextual data, capturing critical details about locations, network segments, and OT devices. The Engine processes and structures this raw data, transforming it into a cybersecurity knowledge graph stored in Neo4j. This graph-based model enables deep relationship mapping, allowing security teams to visualize complex interdependencies, attack pathways, and systemic vulnerabilities across the OT environment.
 
-By combining the flexibility of NoSQL with the analytical power of graph databases, Risk by Context™ ensures fast query performance, real-time risk analysis, and dynamic threat prioritization. This context-aware, scalable data architecture enables security teams to gain deep, actionable insights, strengthening proactive defense strategies and enhancing overall OT cyber resilience.
+By combining the flexibility of NoSQL with the analytical power of graph databases, Risk by Context™ ensures fast query performance, real-time risk analysis, and dynamic threat prioritization. This context-aware, scalable data architecture enables security teams to gain deep, actionable insights, strengthening proactive defense strategies, and enhancing overall OT cyber resilience.
 
 

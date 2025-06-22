@@ -5,8 +5,8 @@ asvin provides a preconfigured virtual machine (OVA file) that includes all the 
 
 .. _preconfigured-vm-prerequisite:
 
-✅ Prerequisites
-----------------
+Prerequisites
+-------------
 
 Before proceeding with the setup, ensure the following requirements are met:
 
@@ -40,7 +40,7 @@ Download Files
 ^^^^^^^^^^^^^^^
 Ensure you have access to the following files.
 
-  * asivn rbc virtual machine image (.ova)
+  * asvin rbc virtual machine image (.ova)
   * docker images
       * Portal:  asvin-rbc-portal.tar
       * Backend: asvin-rbc-device-service.tar
@@ -48,12 +48,12 @@ Ensure you have access to the following files.
   * :download:`docker-compose.yml <../_static/code/docker-compose.yml>`
   * :download:`RBC command line utility <../_static/code/rbc>`
 
-🛠️ Setup Guide: Importing the OVA File into VMware
----------------------------------------------------
+Setup Guide: Importing the OVA File into VMware
+-----------------------------------------------
 Follow the steps below to import the provided .ova file into your VMware application.
 
 .. note::
-  Please install all the required tools and download images as described in :ref:`Prerequisites <preconfigured-vm-prerequisite>` setup.
+  Install all the required tools and download images as described in :ref:`Prerequisites <preconfigured-vm-prerequisite>` setup.
 
 Launch VMware
 ^^^^^^^^^^^^^
@@ -101,7 +101,7 @@ Login Information
 Please refer to the specific documentation or accompanying README.md if different credentials or setup scripts are provided.
 
 
-🔍 Post-Setup Verification
+Post-Setup Verification
 --------------------------
 
 The virtual machine provided in the .ova file comes with the following software pre-installed and pre-configured:
@@ -117,7 +117,7 @@ Docker & Docker Compose
 
 You can verify the installation and check versions after starting the VM:
 
-🔍 To check Docker installation
+To check Docker installation
 """""""""""""""""""""""""""""""
 Open the :term:`Terminal` in the VM and run
 
@@ -131,9 +131,9 @@ You will see output like:
 
    Docker version 28.1.1, build 4eba377
 
-🔍 To check Docker Compose
+To check Docker Compose
 """"""""""""""""""""""""""
-Run following command in the :term:`Terminal`. 
+Run the following command in the :term:`Terminal`. 
 
 .. code-block:: bash
 
@@ -155,7 +155,7 @@ It provides a user-friendly interface to visualize, query, and manage MongoDB da
 .. hint::
   The pre-installed version of the MongoDB Compass is 1.40.4
 
-🔍 Check MongoDB Compass
+Check MongoDB Compass
 """"""""""""""""""""""""
 
   * Open MongoDB Compass from the Applications menu.
@@ -172,7 +172,7 @@ OpenSSH Server
 ^^^^^^^^^^^^^^
 OpenSSH Server allows you to securely access and manage your system remotely via SSH (Secure Shell). It enables encrypted communication and remote terminal access over the network.
 
-🔍 To check SSH Server installation
+To check SSH Server installation
 """""""""""""""""""""""""""""""""""
 Open a :term:`Terminal` in the VM and run following command.
 
@@ -197,13 +197,13 @@ You will see output like:
      CGroup: /system.slice/ssh.service
              └─913 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
 
-📥 Importing Docker Images into the VM
---------------------------------------
+Importing Docker Images into the VM
+------------------------------------
 
 You are provided with pre-built Docker images in a .tar format, you can load them into Docker inside the virtual machine using the docker load command.
 
-📁 Transfer the Docker Image Files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Transfer the Docker Image Files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Ensure the image files mentioned in :ref:`Prerequisites <preconfigured-vm-prerequisite>` section are available inside the VM. You can:
 
   * Drag and drop the file into the VM (if supported by VMware).
@@ -220,14 +220,14 @@ Ensure the image files mentioned in :ref:`Prerequisites <preconfigured-vm-prereq
     #. Select your virtual machine in the VMWare library and right click on it.  
     #. Go to :code:`Settings` → :code:`Options` → :code:`Shared Folders`
     #. Select :code:`Always enabled` and click on :code:`+ Add..`
-    #. In the pop-up enter name and browser the folder on host machine that you want to share.
+    #. In the pop-up enter the name and browser the folder on host machine that you want to share.
 
        .. image:: ../images/vm/shared-folder.jpg
          :alt: Display settings
 
   * Use scp
   
-    #. Power on the VM and find the ip address. You can use :code:`ifconfig` command in the :term:`Terminal`. It will show all network interfaces on the VM. Find the ip address of the wired-connnection interface. It should have output similar to following.
+    #. Power on the VM and find the ip address. You can use :code:`ifconfig` command in the :term:`Terminal`. It will show all network interfaces on the VM. Find the ip address of the wired-connection interface. It should have output like the following.
 
        .. code-block:: bash 
        
@@ -254,8 +254,8 @@ Ensure the image files mentioned in :ref:`Prerequisites <preconfigured-vm-prereq
 
   * Use USB devices as alternatives.
 
-🐳 Load the Image into Docker
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Load the Image into Docker
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 Once the .tar files are accessible inside the VM, open a terminal and run
 
 .. code-block:: bash
@@ -267,7 +267,7 @@ Once the .tar files are accessible inside the VM, open a terminal and run
    If you encounter any errors while using the :code:`./rbc`, please refer to the :ref:`rbc-cli-errors` section for troubleshooting.
 
 .. Note::
-   This command uses :code:`docker load` command to load all RBC images. You can load them manually using following commands.
+   This command uses :code:`docker load` command to load all RBC images. You can load them manually using the following commands.
    
    .. code-block:: bash 
 
@@ -291,8 +291,8 @@ It will give the output as shown below.
    Loaded image: asvin-rbc-portal:latest
 
 
-✅ Verify the Images are Loaded
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Verify the Images are Loaded
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Check the list of available Docker images:
 
@@ -310,14 +310,14 @@ You should see the newly imported image listed as shown below:
   mongo                      6.0.6     7e32c3979b02   22 months ago   653MB
 
 
-🔧 Configuring Ports, Environment Variables and Volumes in Docker Compose
--------------------------------------------------------------------------
+Configuring Ports, Environment Variables and Volumes
+----------------------------------------------------
 
 In the :download:`docker-compose.yml <../_static/code/docker-compose.yml>` file, you can easily configure port mappings, environment variables and volumes for the services.
 
 Port Configuration
 ^^^^^^^^^^^^^^^^^^
-Use the ports field to map a port inside the container to a port on your virtual machine. The format is :code:`<vm_port>:<container_port>`. By default the services run on following ports.
+Use the ports field to map a port inside the container to a port on your virtual machine. The format is :code:`<vm_port>:<container_port>`. By default, the services run on the following ports.
 
   * Portal : 8080
   * Device Service: 5001
@@ -325,7 +325,7 @@ Use the ports field to map a port inside the container to a port on your virtual
 
 Environment Variable Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Use the environment field to set environment variables inside the container. The environments variables are to used to configure the services. The configuration for various services are following.
+Use the environment field to set environment variables inside the container. The environments variables are used to configure the services. The configuration for various services is follows.
 
 .. note::
   
@@ -356,22 +356,22 @@ You can customize the storage location by modifying the following line in the Co
   volumes:
         - ./rbc-data/context:/data/db
 
-Here, the path before the colon :code:`./rbc-data/context` refers to the host machine directory, and /data/db is the internal path inside the MongoDB container where the data is stored.
+Here, the path before the character ':', in this case :code:`./rbc-data/context` refers to the host machine directory, and :code:`/data/db` is the internal path inside the MongoDB container where the data is stored.
 
-🚀 Starting the Application with Docker Compose
------------------------------------------------
+Starting the Application with Docker Compose
+--------------------------------------------
 The application is containerized and orchestrated using Docker Compose, which manages the frontend, backend, and database services.
 
-📁 Navigate to the Project Directory
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Navigate to the Project Directory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Open the :term:`Terminal` inside the virtual machine and move to the directory where the docker-compose.yml file is located:
 
 .. code-block:: bash
 
    cd ~/rbc
 
-🧱 Start the Application
-^^^^^^^^^^^^^^^^^^^^^^^^
+Start the Application
+^^^^^^^^^^^^^^^^^^^^^
 Use the following command to start all services:
   
 .. code-block:: bash
@@ -397,8 +397,8 @@ Docker Compose will automatically start containers for:
   * Device service
   * MongoDB database
 
-🔍 Verify Running Containers
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Verify Running Containers
+^^^^^^^^^^^^^^^^^^^^^^^^^
 Check the status of all services:
 
 .. code-block:: bash
@@ -419,16 +419,16 @@ You should see the containers for portal, devicee service, and database marked a
     ✔ Container rbc-asvin-rbc-device-service-1  Removed
     ✔ Network asvin-rbc                         Removed 
 
-🌐 Access the Portal
-^^^^^^^^^^^^^^^^^^^^
+Access the Portal
+^^^^^^^^^^^^^^^^^
 Open a browser inside the VM or from the host (if port forwarding is enabled) and go to: http://localhost:8080
 
 .. note::
 
   You can change the port in your docker-compose.yml.
 
-🛑 Stopping the Application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Stopping the Application
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 To stop all RBC containers:
 
@@ -446,7 +446,7 @@ To stop all RBC containers:
 
   .. code-block:: bash
 
-    docer compose down
+    docker compose down
 
 This will stop and clean up all running containers. The output would be similar as below:
 
@@ -459,8 +459,8 @@ This will stop and clean up all running containers. The output would be similar 
     ✔ Network asvin-rbc                         Removed
 
 
-🖥️ Connecting to MongoDB Using MongoDB Compass
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Connecting to MongoDB Using MongoDB Compass
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 MongoDB Compass is a graphical interface that allows you to easily connect to your database, explore collections, and run queries without using the command line. Follow the steps below to connect to your MongoDB instance.
 
 .. raw:: html
@@ -481,7 +481,7 @@ MongoDB Compass is a graphical interface that allows you to easily connect to yo
 
     .. note:: 
 
-        Replace the username, password, host and port accordingly. 
+        Replace the username, password, host, and port accordingly. 
 
     - Enter the connection name
 
@@ -491,8 +491,8 @@ MongoDB Compass is a graphical interface that allows you to easily connect to yo
     - Once connected, you will see a list of databases on the left sidebar.
     - Select your database (e.g., :code:`asvin_rbc_local`) to view its collections and documents.
 
-🔄 Upgrade RBC Application
---------------------------
+Upgrade RBC Application
+-----------------------
 
 #. Copy updated docker images to the VM.
 
@@ -504,7 +504,7 @@ MongoDB Compass is a graphical interface that allows you to easily connect to yo
      * :code:`asvin-rbc-device-service.tar`
      * :code:`asvin-rbc-mongo.tar`
 
-     These exact file names are required for correct processing. Avoid any deviations in spelling, case, or file extension.
+     These exact file names are required for processing correctly. Avoid any deviations in spelling, case, or file extension.
 
 #. Upgrade the RBC containers. 
 
@@ -516,11 +516,11 @@ MongoDB Compass is a graphical interface that allows you to easily connect to yo
 
       If you encounter any errors while using the :code:`./rbc`, please refer to the :ref:`rbc-cli-errors` section for troubleshooting.
 
-   Congratulations, you have successfully upgraded the RBC applications. Under the hood the command loads the docker images, removes the containers, creates and starts them again. 
+   Congratulations, you have successfully upgraded the RBC applications. Under the hood, the command loads the docker images, removes the containers, creates and starts them again. 
    
-   If you are interested to do it manualy you can follow guidelines below. 
+   If you are interested in doing it manually, you can follow the guidelines below. 
    
-   #. Load the image. For example if you have received new version of RBC Portal image :code:`asvin-rbc-portal.tar`, you can import it using following command in :term:`Terminal`.
+   #. Load the image. For example, if you have received new version of :term:`RBC Portal` image :code:`asvin-rbc-portal.tar`, you can import it using the following command in :term:`Terminal`.
 
       * using :term:`RBC CLI`
     
@@ -549,11 +549,11 @@ MongoDB Compass is a graphical interface that allows you to easily connect to yo
            docker compose down
            docker compose up -d
 
-📥 Data Import
---------------
+Data Import
+-----------
 The RBC Portal allows you to manually import data for Locations, Segments, and Devices using CSV files. To begin, navigate to the :code:`Imports` page from the sidebar menu.
 
-📊 Supported Data Types
+Supported Data Types
 
 #. Location
 #. Segment
@@ -584,7 +584,7 @@ CSV Requirements:
 * Must include a :code:`Name` and :code:`Coordinates`.
 
 .. warning::
-  The coordinate for the location must be provided in [longitude, latitude] format. Using any other order may lead to incorrect geospatial processing.
+  The coordinates for the location must be provided in [longitude, latitude] format. Using any other order may lead to incorrect geospatial processing.
 
 
 Segment Import

@@ -24,8 +24,8 @@ Risk by Context™ provides a glossary to ensure a clear and consistent understa
     MongoDB
       A NoSQL database used by the RBC platform to store and retrieve data. Runs in a container and is managed via the utility.
 
-    Portal
-      The main web interface or frontend of the RBC platform. Can be started or stopped using the RBC utility.
+    RBC Portal
+      A web-based application that provides a comprehensive view of the OT environment's risk posture. It visualizes real-time risk scores, highlights critical vulnerabilities, and presents contextual insights derived from the RBC-Index, enabling security teams to monitor, assess, and prioritize cyber risks across operational technology assets.
 
     RBC CLI
       A custom Bash-based command-line tool to manage Docker images and containers for the RBC platform, including services like Portal, Device, and MongoDB. You can download the utility from :download:`here <_static/code/rbc>`. For usage instructions, refer to the :doc:`RBC CLI Reference <getting-started/rbc-cli>`.
