@@ -10,7 +10,7 @@ Contextual Parameters Characteristics
 -------------------------------------
 When setting contextual parameters, you will need to configure the following characteristics:
 
-#. **Visibility**: Defines whether a parameter is enable or disabled in the RBC-Index calculation.
+#. **Visibility**: Defines whether a parameter is enabled or disabled in the RBC-Index calculation.
     
     * `Checked`: The parameter is enabled in the settings UI and will be used in the RBC-Index calculation.
     
@@ -70,11 +70,11 @@ To set contextual parameters at the segment and device levels, follow the steps 
 
 #. Verify the Settings: After saving the configurations, verify that the contextual parameters are applied correctly:
 
-    * **Test Visibility**: If the parameter is set to **Enable**, it should appear green in the settings UI. If it is set to **Disable**, checkbox should appear empt in the UI.
+    * **Test Visibility**: If the parameter is set to **Enable**, it should appear green in the settings UI. If it is set to **Disable**, checkbox should appear empty in the UI.
     
-    * **Test Threshold**: Check the threshold is set to the desired numeric value.
+    * **Test Threshold**: Check if the **Threshold** is set to the desired numeric value.
     
-    * **Test Relevance**: Check the relevant is set to the specified value.
+    * **Test Relevance**: Check if the **Relevance** is set to the specified value.
 
 Example of Setting Parameters in the UI
 ---------------------------------------
