@@ -1,0 +1,342 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: asvin-rbc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: asvin-rbc-portal
+  namespace: asvin-rbc
+  labels:
+    app:  asvin-rbc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  asvin-rbc
+  template:
+    metadata:
+      labels:
+        app:  asvin-rbc
+    spec:
+      containers:
+        - name: rbc-fe
+          image: asvin-rbc-frontend:<tag>
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "500Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 4
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 2
+      imagePullSecrets:
+        - name: asvin-rbc-frontend-registry
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: asvin-rbc-portal-svc
+  namespace: asvin-rbc
+  labels:
+    app:  asvin-rbc
+spec:
+  ports:
+    - port: 8080
+      targetPort: 80
+  selector:
+    app:  asvin-rbc
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: asvin-rbc-secret
+  namespace: asvin-rbc
+type: Opaque
+data:
+  DBConnectionString: <db-connection-string-base64>
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: asvin-rbc-device-service
+  namespace: asvin-rbc
+  labels:
+    app: asvin-rbc-device-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: asvin-rbc-device-service
+  template:
+    metadata:
+      labels:
+        app: asvin-rbc-device-service
+    spec:
+      containers:
+        - name: asvin-rbc-device-service
+          image: asvin-rbc-device-service:$CI_COMMIT_SHA
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5001
+          env:
+            - name: MongoConnection__ConnectionString
+              valueFrom:
+                secretKeyRef:
+                  name: asvin-rbc-device-service-secret
+                  key: DBConnectionString
+            - name: MongoConnection__Databse
+              valueFrom:
+                secretKeyRef:
+                  name: asvin-rbc-device-service-secret
+                  key: DBName
+            - name: ASPNETCORE_ENVIRONMENT
+              value: $ASPNETCORE_ENVIRONMENT
+          resources:
+            requests:
+              memory: "500Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /swagger/index.html
+              port: 5001
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 4
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /swagger/index.html
+              port: 5001
+              scheme: HTTP
+            initialDelaySeconds: 59
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 2
+      imagePullSecrets:
+        - name: asvin-device-ms-registry
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: asvin-rbc-device-service
+  namespace: asvin-rbc
+  labels:
+    app: asvin-rbc-device-service
+spec:
+  ports:
+    - port: 5001
+      targetPort: 5001
+  selector:
+    app: asvin-rbc-device-service
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: asvin-rbc-device-service-secret
+  namespace: asvin-rbc
+type: Opaque
+data:
+  DBConnectionString: $RBC_MONGODB_CONNECTION_STRING
+  DBName: $RBC_MONGODB_DATABASE_NAME
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: asvin-device-ms-registry
+  namespace: asvin-rbc
+  labels:
+    app: asvin-rbc-device-service
+data:
+  .dockerconfigjson: $DOCKER_CONFIG_JSON
+type: kubernetes.io/dockerconfigjson
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: asvin-rbc-device-service
+  namespace: asvin-rbc
+  labels:
+    app: asvin-rbc-device-service
+  annotations:
+    cert-manager.io/cluster-issuer: <issuer-name>
+    kubernetes.io/ingress.class: <class-name>
+spec:
+  rules:
+    - host: $RBC_BACKEND_HEADER_URL
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: asvin-rbc-device-service
+                port:
+                  number: 5001
+  tls:
+    - secretName: $RBC_BACKEND_HEADER_URL-le-cert
+      hosts:
+        - $RBC_BACKEND_HEADER_URL
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: asvin-rbc-ingress
+  namespace: asvin-rbc
+  labels:
+    app: asvin-rbc
+  annotations:
+    cert-manager.io/cluster-issuer: <issuer-name>
+spec:
+  ingressClassName: <class-name>
+  rules:
+    - host: <asvin-rbc-portal-url>
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: asvin-rbc-portal-svc
+                port:
+                  number: 8080
+  tls:
+    - secretName: <asvin-rbc-portal-url>-le-cert
+      hosts:
+        - <asvin-rbc-portal-url>
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: asvin-rbc-db
+  namespace: asvin-rbc
+  labels:
+    app: asvin-rbc-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: asvin-rbc-db
+  template:
+    metadata:
+      labels:
+        app: asvin-rbc-db
+    spec:
+      containers:
+        - name: asvin-rbc-db
+          image: mongo:6.0.6
+          imagePullPolicy: IfNotPresent
+          args: ["--dbpath","/data/db"]
+          ports:
+            - containerPort: 27017
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: asvin-rbc-db-secret
+                  key: username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: asvin-rbc-db-secret
+                  key: password
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "250m"
+            limits:
+              memory: "2Gi"
+              cpu: "500m"
+          livenessProbe:
+            tcpSocket:
+              port: 27017
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 27017
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 5
+            failureThreshold: 3
+          volumeMounts:
+            - name: "mongo-data-dir"
+              mountPath: "/data/db"
+      volumes:
+      - name: "mongo-data-dir"
+        persistentVolumeClaim:
+          claimName: asvin-rbc-mongo-pvc
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: asvin-rbc-mongo-pvc
+  namespace: asvin-rbc
+  labels:
+    app: asvin-rbc-db
+spec:
+  accessModes:
+    - ReadWriteOnce 
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: asvin-rbc-db-secret
+  namespace: asvin-rbc
+type: Opaque
+data:
+  username: $MONGO_INITDB_ROOT_USERNAME
+  password: $MONGO_INITDB_ROOT_PASSWORD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: asvin-rbc-db
+  namespace: asvin-rbc
+  labels:
+    app: asvin-rbc-db
+spec:
+  ports:
+    - port: 27017
+      targetPort: 27017
+  selector:
+    app: asvin-rbc-db

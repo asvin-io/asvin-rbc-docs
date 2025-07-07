@@ -8,6 +8,7 @@ This section describes two different methods for installing Risk by Context™ o
 
 - :doc:`own-machine-deployment`: Recommended for users who prefer to install and configure the system manually on their physical or virtual machine.
 - :doc:`vm-deployment`: Recommended for users who want a quick and hassle-free setup with all required software already installed.
+- :doc:`cloud-kubernetes-deployment`: Deployment on the cloud bases kuberbetes cluster.
 
 Choose the method that best fits your environment and follow the corresponding instructions.
 
@@ -17,3 +18,4 @@ Choose the method that best fits your environment and follow the corresponding i
 
    own-machine-deployment
    vm-deployment
+   cloud-kubernetes-deployment
