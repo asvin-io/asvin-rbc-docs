@@ -5,7 +5,7 @@
 	  navigation panel.
 
 Risk by Context™
-===============
+================
 
 .. image:: images/asvin-logo-transparent.png
    :alt: asvin logo
@@ -14,7 +14,7 @@ Risk by Context™
 An Enterprise-grade Cyber security Risk management solution.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    introduction
    getting-started/getting-started
