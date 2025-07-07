@@ -21,6 +21,7 @@ services:
       - MongoConnection__ConnectionString=mongodb://changeusername:changemepassword@asvin-rbc-mongo:27017/?authSource=admin
       - MongoConnection__Database=asvin_rbc_local
       - JsonWebTokenKeys__IssuerSigningKey="change-json-web-token-key"
+      - Serilog__WriteTo__0__Args__databaseUrl=mongodb://changeusername:changemepassword@asvin-rbc-mongo:27017/asvin_rbc_local?authSource=admin
     ports:
       - "5001:5001"
     networks:
