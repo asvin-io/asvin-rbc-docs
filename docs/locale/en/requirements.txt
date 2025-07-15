@@ -6,3 +6,4 @@ recommonmark==0.7.1
 sphinxcontrib-httpdomain==1.8.1
 sphinx-tabs==3.4.7
 sphinx-copybutton==0.5.2
+sphinxcontrib.openapi==0.8.4
