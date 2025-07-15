@@ -21,5 +21,6 @@ An Enterprise-grade Cyber security Risk management solution.
    how-to/how-to
    key-concepts/key-concepts
    security/security
+   rest-apis
    contribution/contribution
    glossary

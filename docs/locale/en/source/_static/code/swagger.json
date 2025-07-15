@@ -1,0 +1,6027 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "DeviceService",
+    "version": "0.1"
+  },
+  "paths": {
+    "/api/v0.1/Advisory": {
+      "get": {
+        "tags": [
+          "Advisory"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "searchText",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Advisory/GitHubAdvisories": {
+      "get": {
+        "tags": [
+          "Advisory"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Advisory/GitHubAdvisories/{ghsaId}": {
+      "get": {
+        "tags": [
+          "Advisory"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "ghsaId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Cve": {
+      "get": {
+        "tags": [
+          "Cve"
+        ],
+        "summary": "Retrieves All CVEs.",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "resultsPerPage",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Cve/{cveId}": {
+      "get": {
+        "tags": [
+          "Cve"
+        ],
+        "summary": "Retrieves cve details based on the cve ID.",
+        "operationId": "CveById",
+        "parameters": [
+          {
+            "name": "cveId",
+            "in": "path",
+            "description": "The ID of the cve.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Device": {
+      "get": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "GetAllDevices",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "CreateDevice",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoEntityResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoEntityResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoEntityResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Device/user": {
+      "get": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "GetAllDevicesByLoggedInUser",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceWithVulnerabilityDtoEntityResponseListDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceWithVulnerabilityDtoEntityResponseListDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceWithVulnerabilityDtoEntityResponseListDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Device/{id}": {
+      "get": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "GetDeviceById",
+        "operationId": "DeviceById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoEntityResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoEntityResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoEntityResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "Update Device",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceForUpdateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceForUpdateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceForUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoEntityResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoEntityResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceDtoEntityResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Device/{id}/addExistingVulnerability/{vul}": {
+      "post": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "Add existing Vulnerability to Device",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vul",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Device/{id}/removeVulnerability/{vul}": {
+      "delete": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "Remove Vulnerability from Device",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vul",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/DeviceParam/names": {
+      "get": {
+        "tags": [
+          "DeviceParam"
+        ],
+        "summary": "GetDeviceParamConstants",
+        "operationId": "DeviceParamConstants",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/DeviceParam/user": {
+      "get": {
+        "tags": [
+          "DeviceParam"
+        ],
+        "summary": "GetAllForLoggedInUser",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/DeviceParam": {
+      "get": {
+        "tags": [
+          "DeviceParam"
+        ],
+        "summary": "GetAllDeviceParams",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DeviceParam"
+        ],
+        "summary": "CreateDeviceParam",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceParamForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceParamForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceParamForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "DeviceParam"
+        ],
+        "summary": "Delete all DeviceParam for logged-in user.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/DeviceParam/{id}": {
+      "get": {
+        "tags": [
+          "DeviceParam"
+        ],
+        "summary": "GetDeviceParamById",
+        "operationId": "DeviceParamById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DeviceParam"
+        ],
+        "summary": "Update DeviceParam",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceParamForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceParamForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceParamForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "DeviceParam"
+        ],
+        "summary": "Delete DeviceParam",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/DeviceParam/createMultiple": {
+      "post": {
+        "tags": [
+          "DeviceParam"
+        ],
+        "summary": "CreateDeviceParams Multiple",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceParamsForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceParamsForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceParamsForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/DeviceParam/updateMultiple": {
+      "put": {
+        "tags": [
+          "DeviceParam"
+        ],
+        "summary": "update Multiple DeviceParams",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceParamsForUpdateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceParamsForUpdateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceParamsForUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Facility": {
+      "get": {
+        "tags": [
+          "Facility"
+        ],
+        "summary": "Get all facilities from database.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Facility"
+        ],
+        "summary": "Creates facility with given name in the database.",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FacilityForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FacilityForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FacilityForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Facility/user": {
+      "get": {
+        "tags": [
+          "Facility"
+        ],
+        "summary": "Get all facilities for logged-in user.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Facility/{id}": {
+      "get": {
+        "tags": [
+          "Facility"
+        ],
+        "summary": "Get facility by id from database.",
+        "operationId": "FacilityById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Facility"
+        ],
+        "summary": "Updates an existing facility with the specified data.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the facility to update.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The data model containing the updated facility details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FacilityForUpdateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FacilityForUpdateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FacilityForUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Facility/delete/{facilityId}": {
+      "delete": {
+        "tags": [
+          "Facility"
+        ],
+        "summary": "Deletes a facility by its unique identifier.",
+        "parameters": [
+          {
+            "name": "facilityId",
+            "in": "path",
+            "description": "The unique identifier of the facility to delete.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Facility/{facilityId}/Segment": {
+      "post": {
+        "tags": [
+          "Facility"
+        ],
+        "summary": "Add a new segment to the facility specified by its unique identifier.",
+        "parameters": [
+          {
+            "name": "facilityId",
+            "in": "path",
+            "description": "The unique identifier of the facility.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The segment to add",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Facility/{facilityId}/Segment/Batch": {
+      "post": {
+        "tags": [
+          "Facility"
+        ],
+        "summary": "Add a new segment to the facility specified by its unique identifier.",
+        "parameters": [
+          {
+            "name": "facilityId",
+            "in": "path",
+            "description": "The unique identifier of the facility.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The segment to add",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SegmentForCreateDto"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SegmentForCreateDto"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SegmentForCreateDto"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Facility/{id}/Segment/{segmentId}": {
+      "post": {
+        "tags": [
+          "Facility"
+        ],
+        "summary": "Add existing Segment to Facility",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "segmentId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Facility"
+        ],
+        "summary": "Remove Segment from Facility",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "segmentId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/History/location/facility/create": {
+      "get": {
+        "tags": [
+          "History"
+        ],
+        "summary": "CreateLocationAndFacilityHistoryRecords only in location and facility level count deeper level low medium high trough Score and get the highest Score from deeper level.",
+        "operationId": "createLocationHistory",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/History/connection": {
+      "post": {
+        "tags": [
+          "History"
+        ],
+        "summary": "CreateSegmentAndDeviceHistoryRecords",
+        "operationId": "createHistory",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/History/connection/all": {
+      "get": {
+        "tags": [
+          "History"
+        ],
+        "summary": "GetAllSegmentHistories",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/History/connection/user/all": {
+      "get": {
+        "tags": [
+          "History"
+        ],
+        "summary": "GetLastConnectionHistoryForUser",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/History/connection/user/last": {
+      "get": {
+        "tags": [
+          "History"
+        ],
+        "summary": "GetLastConnectionHistoryForUser",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/History/connection/{id}": {
+      "get": {
+        "tags": [
+          "History"
+        ],
+        "summary": "SegmentHistoryById",
+        "operationId": "SegmentHistoryById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/History/connection/last/{connectionId}": {
+      "get": {
+        "tags": [
+          "History"
+        ],
+        "summary": "GetLastSegmentHistoryBySegmentId",
+        "operationId": "SegmentHistoryLastBySegmentId",
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/History/device/all": {
+      "get": {
+        "tags": [
+          "History"
+        ],
+        "summary": "GetAllDeviceHistories",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/History/device/user/all": {
+      "get": {
+        "tags": [
+          "History"
+        ],
+        "summary": "GetAllDeviceHistoriesForUser",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/History/device/{id}": {
+      "get": {
+        "tags": [
+          "History"
+        ],
+        "summary": "GetDeviceHistoryById",
+        "operationId": "DeviceHistoryById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/History/device/last/{deviceId}": {
+      "get": {
+        "tags": [
+          "History"
+        ],
+        "summary": "GetLastDeviceHistoryByDeviceId",
+        "operationId": "DeviceHistoryLastByDeviceId",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Import": {
+      "post": {
+        "tags": [
+          "Import"
+        ],
+        "summary": "Add Import Data",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Interface": {
+      "get": {
+        "tags": [
+          "Interface"
+        ],
+        "summary": "GetAllInterfaces",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Interface"
+        ],
+        "summary": "CreateInterface",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterfaceForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterfaceForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterfaceForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterfaceForCreateDtoEntityResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterfaceForCreateDtoEntityResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterfaceForCreateDtoEntityResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Interface/{id}": {
+      "get": {
+        "tags": [
+          "Interface"
+        ],
+        "summary": "GetInterfaceById",
+        "operationId": "InterfaceById",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Unique identifier of an Entity.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterfaceEntityResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterfaceEntityResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterfaceEntityResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Interface"
+        ],
+        "summary": "Updates an existing interface with the specified data.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the interface to update.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The data model containing the updated interface details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterfaceForUpdateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterfaceForUpdateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterfaceForUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Interface"
+        ],
+        "summary": "Deletes a interface by its unique identifier.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the interface to delete.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Interface/user": {
+      "get": {
+        "tags": [
+          "Interface"
+        ],
+        "summary": "Get all interfaces for logged-in user.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterfaceEntityResponseListDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterfaceEntityResponseListDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterfaceEntityResponseListDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Interface/test": {
+      "post": {
+        "tags": [
+          "Interface"
+        ],
+        "summary": "TestInterface",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterfaceForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterfaceForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterfaceForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Interface/{id}/status/{status}": {
+      "post": {
+        "tags": [
+          "Interface"
+        ],
+        "summary": "SetInterfaceStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/InterfaceStatus"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Interface/{id}/sync": {
+      "post": {
+        "tags": [
+          "Interface"
+        ],
+        "summary": "CreateInterface",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Unique identifier of an Entity.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Location": {
+      "get": {
+        "tags": [
+          "Location"
+        ],
+        "summary": "Get all locations from database.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Location"
+        ],
+        "summary": "Creates location with given name in the database.",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocationForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocationForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocationForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationDtoEntityResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationDtoEntityResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationDtoEntityResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Location/user": {
+      "get": {
+        "tags": [
+          "Location"
+        ],
+        "summary": "Get all locations for logged-in user.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationWithFacilityDtoEntityResponseListDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationWithFacilityDtoEntityResponseListDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationWithFacilityDtoEntityResponseListDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Location/user/Names": {
+      "get": {
+        "tags": [
+          "Location"
+        ],
+        "summary": "Get all locations for logged-in user.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationBasicDtoEntityResponseListDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationBasicDtoEntityResponseListDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationBasicDtoEntityResponseListDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Location/{id}": {
+      "get": {
+        "tags": [
+          "Location"
+        ],
+        "summary": "Get location by id from database.",
+        "operationId": "LocationById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationWithFacilityDtoEntityResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationWithFacilityDtoEntityResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationWithFacilityDtoEntityResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Location"
+        ],
+        "summary": "Updates an existing location with the specified data.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the location to update.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The data model containing the updated location details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocationForUpdateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocationForUpdateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocationForUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationDtoEntityResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationDtoEntityResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationDtoEntityResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Location/Batch": {
+      "post": {
+        "tags": [
+          "Location"
+        ],
+        "summary": "Creates location with given name in the database.",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/LocationForCreateDto"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/LocationForCreateDto"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/LocationForCreateDto"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationDtoEntityResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationDtoEntityResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationDtoEntityResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Location/{locationId}": {
+      "delete": {
+        "tags": [
+          "Location"
+        ],
+        "summary": "Deletes a location by its unique identifier.",
+        "parameters": [
+          {
+            "name": "locationId",
+            "in": "path",
+            "description": "The unique identifier of the location to delete.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Location/{locationId}/Facility": {
+      "post": {
+        "tags": [
+          "Location"
+        ],
+        "summary": "Add a new facility to the location specified by its unique identifier.",
+        "parameters": [
+          {
+            "name": "locationId",
+            "in": "path",
+            "description": "The unique identifier of the location.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The facility to add",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FacilityForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FacilityForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FacilityForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Location/{id}/Facility/{facilityId}": {
+      "post": {
+        "tags": [
+          "Location"
+        ],
+        "summary": "Add existing Facility to Location",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "facilityId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Location"
+        ],
+        "summary": "Remove Facility from Location",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "facilityId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Recommendation": {
+      "get": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "GetAllRecommendations",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "CreateRecommendation",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecommendationForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecommendationForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecommendationForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Recommendation/{recommendationId}": {
+      "get": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Retrieves a recommendation by Id.",
+        "operationId": "RecommendationById",
+        "parameters": [
+          {
+            "name": "recommendationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Recommendation/getByType/{type}/and/Name/{name}": {
+      "get": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Retrieves a recommendation by Type And Name.",
+        "operationId": "RecommendationByTypeAndName",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Recommendation/{id}": {
+      "put": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Update Recommendation",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecommendationForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecommendationForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecommendationForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Recommendation/delete/{recommendationId}": {
+      "delete": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Deletes a recommendation by its unique identifier.",
+        "parameters": [
+          {
+            "name": "recommendationId",
+            "in": "path",
+            "description": "The unique identifier of the recommendation to delete.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Report": {
+      "post": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "Creates a new report.",
+        "requestBody": {
+          "description": "Report details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportDtoEntityResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportDtoEntityResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportDtoEntityResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Report/{id}": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "Retrieves report details based on the report id.",
+        "operationId": "ReportById",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Unique identifier of an Entity.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportDtoEntityResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportDtoEntityResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportDtoEntityResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Report/Count": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "Retrieves number of reports for a user.",
+        "operationId": "GetReportCount",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Report/user": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "Get all locations for logged-in user.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportDtoEntityResponseListDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportDtoEntityResponseListDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportDtoEntityResponseListDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Report/Entity/{id}": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "Retrieves report details based on the report id.",
+        "operationId": "ReportsByEntityId",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Unique identifier of an Entity.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportDtoEntityResponseListDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportDtoEntityResponseListDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportDtoEntityResponseListDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Report/SendEmail": {
+      "post": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "Send Report to Email",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendReportDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendReportDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendReportDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Search/user": {
+      "get": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "SearchForLoggedInUser",
+        "parameters": [
+          {
+            "name": "term",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Segment/user": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "summary": "Retrieves a list of all segments for logged-in user.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Segment": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "summary": "Retrieves a list of all non-empty segments.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Segment"
+        ],
+        "summary": "Creates a new segment",
+        "requestBody": {
+          "description": "The segment to create.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Segment/empty": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "summary": "Retrieves a list of all empty segments.",
+        "operationId": "AllEmptyConnections",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Segment/{segmentId}": {
+      "get": {
+        "tags": [
+          "Segment"
+        ],
+        "summary": "Retrieves a specific segment by its unique identifier.",
+        "operationId": "SegmentById",
+        "parameters": [
+          {
+            "name": "segmentId",
+            "in": "path",
+            "description": "The unique identifier of the segment.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Segment"
+        ],
+        "summary": "Updates an existing segment. NOT Updating the assigned devices!!!",
+        "parameters": [
+          {
+            "name": "segmentId",
+            "in": "path",
+            "description": "The unique identifier of the segment to update.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The updated segment data.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Segment"
+        ],
+        "summary": "Deletes a segment by its unique identifier.",
+        "parameters": [
+          {
+            "name": "segmentId",
+            "in": "path",
+            "description": "The unique identifier of the segment to delete.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Segment/{segmentId}/Device": {
+      "post": {
+        "tags": [
+          "Segment"
+        ],
+        "summary": "Add a new device to the segment specified by its unique identifier.",
+        "parameters": [
+          {
+            "name": "segmentId",
+            "in": "path",
+            "description": "The unique identifier of the segment.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The device to add",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Segment/{segmentId}/Device/Batch": {
+      "post": {
+        "tags": [
+          "Segment"
+        ],
+        "summary": "Add a new device to the segment specified by its unique identifier.",
+        "parameters": [
+          {
+            "name": "segmentId",
+            "in": "path",
+            "description": "The unique identifier of the segment.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The device to add",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DeviceForCreateDto"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DeviceForCreateDto"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DeviceForCreateDto"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Segment/{segmentId}/Device/{deviceId}": {
+      "post": {
+        "tags": [
+          "Segment"
+        ],
+        "summary": "Add an existing device to segment specified by its unique identifier.",
+        "parameters": [
+          {
+            "name": "segmentId",
+            "in": "path",
+            "description": "The unique identifier of the segment to update.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "The unique identifier of the device to add.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Segment"
+        ],
+        "summary": "Remove a device from segment",
+        "parameters": [
+          {
+            "name": "segmentId",
+            "in": "path",
+            "description": "The unique identifier of the segment to update.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "The unique identifier of the device to remove.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/SegmentParam/names": {
+      "get": {
+        "tags": [
+          "SegmentParam"
+        ],
+        "summary": "GetAlSegmentParams",
+        "operationId": "ConnectionParamConstants",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/SegmentParam": {
+      "get": {
+        "tags": [
+          "SegmentParam"
+        ],
+        "summary": "GetAlConnectionParams",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "SegmentParam"
+        ],
+        "summary": "CreateSegmentParam",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentParamForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentParamForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentParamForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "SegmentParam"
+        ],
+        "summary": "Delete all SegmentParam for logged-in user.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/SegmentParam/user": {
+      "get": {
+        "tags": [
+          "SegmentParam"
+        ],
+        "summary": "GetAllForLoggedInUser",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/SegmentParam/{id}": {
+      "get": {
+        "tags": [
+          "SegmentParam"
+        ],
+        "summary": "GetSegmentParamById",
+        "operationId": "SegmentParamById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "SegmentParam"
+        ],
+        "summary": "UpdateSegmentParam",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentParamForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentParamForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentParamForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "SegmentParam"
+        ],
+        "summary": "Delete SegmentParam",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/SegmentParam/createMultiple": {
+      "post": {
+        "tags": [
+          "SegmentParam"
+        ],
+        "summary": "CreateSegmentParams Multiple",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentParamsForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentParamsForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentParamsForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/SegmentParam/updateMultiple": {
+      "put": {
+        "tags": [
+          "SegmentParam"
+        ],
+        "summary": "Update Multiple SegmentParams",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentParamsForUpdateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentParamsForUpdateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentParamsForUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Snapshot/segment/{segmentId}/user": {
+      "get": {
+        "tags": [
+          "Snapshot"
+        ],
+        "summary": "Retrieves a list of all segments for logged-in user.",
+        "parameters": [
+          {
+            "name": "segmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Snapshot/segment/{segmentId}/user/dates": {
+      "post": {
+        "tags": [
+          "Snapshot"
+        ],
+        "summary": "Retrieves a list of all SnapshotSegments for logged-in user.",
+        "parameters": [
+          {
+            "name": "segmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SnapshotSegmentByDatesDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SnapshotSegmentByDatesDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SnapshotSegmentByDatesDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Snapshot/facility/{facilityId}/user": {
+      "get": {
+        "tags": [
+          "Snapshot"
+        ],
+        "summary": "Retrieves a list of all SnapshotFacility for logged-in user.",
+        "parameters": [
+          {
+            "name": "facilityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Snapshot/facility/{facilityId}/user/dates": {
+      "post": {
+        "tags": [
+          "Snapshot"
+        ],
+        "summary": "Retrieves a list of all SnapshotFacilities for logged-in user.",
+        "parameters": [
+          {
+            "name": "facilityId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SnapshotFacilityByDatesDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SnapshotFacilityByDatesDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SnapshotFacilityByDatesDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Snapshot/location/{locationId}/user": {
+      "get": {
+        "tags": [
+          "Snapshot"
+        ],
+        "summary": "Retrieves a list of all SnapshotFacility for logged-in user.",
+        "parameters": [
+          {
+            "name": "locationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Snapshot/location/{locationId}/user/dates": {
+      "post": {
+        "tags": [
+          "Snapshot"
+        ],
+        "summary": "Retrieves a list of all SnapshotLocations for logged-in user.",
+        "parameters": [
+          {
+            "name": "locationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SnapshotLocationByDatesDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SnapshotLocationByDatesDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SnapshotLocationByDatesDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Snapshot/location/all/user/dates": {
+      "post": {
+        "tags": [
+          "Snapshot"
+        ],
+        "summary": "Retrieves a list of SnapshotLocations for logged-in user.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SnapshotLocationByDatesDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SnapshotLocationByDatesDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SnapshotLocationByDatesDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Snapshot/segment": {
+      "post": {
+        "tags": [
+          "Snapshot"
+        ],
+        "summary": "CreateSnapshotsForSegmentRecords",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Snapshot/facility": {
+      "post": {
+        "tags": [
+          "Snapshot"
+        ],
+        "summary": "CreateSnapshotsForFacilityRecords",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Snapshot/location": {
+      "post": {
+        "tags": [
+          "Snapshot"
+        ],
+        "summary": "CreateSnapshotsForLocationRecords",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Snapshot/segment/delete/{snapshotSegmentId}": {
+      "delete": {
+        "tags": [
+          "Snapshot"
+        ],
+        "summary": "Deletes a snapshotSegment by its unique identifier.",
+        "parameters": [
+          {
+            "name": "snapshotSegmentId",
+            "in": "path",
+            "description": "The unique identifier of the snapshotSegment to delete.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Snapshot/facility/delete/{snapshotFacilityId}": {
+      "delete": {
+        "tags": [
+          "Snapshot"
+        ],
+        "summary": "Deletes a snapshotFacility by its unique identifier.",
+        "parameters": [
+          {
+            "name": "snapshotFacilityId",
+            "in": "path",
+            "description": "The unique identifier of the snapshotFacility to delete.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Snapshot/location/delete/{snapshotLocationId}": {
+      "delete": {
+        "tags": [
+          "Snapshot"
+        ],
+        "summary": "Deletes a snapshotLocation by its unique identifier.",
+        "parameters": [
+          {
+            "name": "snapshotLocationId",
+            "in": "path",
+            "description": "The unique identifier of the snapshotLocation to delete.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v0.1/Token": {
+      "post": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "Generates an Access token.",
+        "requestBody": {
+          "description": "The user login details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLogin"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLogin"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLogin"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/User": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "GetAllUsers",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "CreateUser",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/User/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "GetUserById",
+        "operationId": "UserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/User/ForgotPassword": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Initiate forget password request.",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserIdentificationDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserIdentificationDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserIdentificationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/User/ResetPassword": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Initiates user password reset request.",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Vulnerability": {
+      "get": {
+        "tags": [
+          "Vulnerability"
+        ],
+        "summary": "GetAllVulnerabilities",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Vulnerability"
+        ],
+        "summary": "CreateVulnerability",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VulnerabilityForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VulnerabilityForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VulnerabilityForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v0.1/Vulnerability/{id}": {
+      "get": {
+        "tags": [
+          "Vulnerability"
+        ],
+        "summary": "GetVulnerabilityById",
+        "operationId": "VulnerabilityById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Vulnerability"
+        ],
+        "summary": "Update Vulnerability",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VulnerabilityForCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VulnerabilityForCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VulnerabilityForCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BaseResponseModel": {
+        "type": "object",
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean",
+            "description": "Indicates whether the request was successful."
+          },
+          "Errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Contains any error messages associated with the response.\r\nEmpty if DeviceService.Contracts.DataTransferObjects.BaseResponseModel.IsSuccess is true.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a standard response wrapper for API endpoints.\r\nUsed to provide a consistent response structure across all endpoints."
+      },
+      "DeviceDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Gets or sets the unique identifier of the device.",
+            "nullable": true
+          },
+          "DeviceId": {
+            "type": "string",
+            "description": "Gets or sets the DeviceId of the device.",
+            "nullable": true
+          },
+          "DeviceRef": {
+            "type": "string",
+            "description": "Gets or sets the DeviceRef of the device.",
+            "nullable": true
+          },
+          "Score": {
+            "type": "number",
+            "description": "Gets or sets the RBC-Index of the device.",
+            "format": "double"
+          },
+          "Impact": {
+            "type": "number",
+            "description": "Gets or sets the impact score of the device.",
+            "format": "double",
+            "nullable": true
+          },
+          "Likelihood": {
+            "type": "number",
+            "description": "Gets or sets the likelihood score of the device.",
+            "format": "double",
+            "nullable": true
+          },
+          "High": {
+            "type": "integer",
+            "description": "Gets or sets the number of vulnerabilities in the device with high risk level.",
+            "format": "int32"
+          },
+          "Medium": {
+            "type": "integer",
+            "description": "Gets or sets the number of vulnerabilities in the device with medium risk level.",
+            "format": "int32"
+          },
+          "Low": {
+            "type": "integer",
+            "description": "Gets or sets the number of vulnerabilities in the device with low risk level.",
+            "format": "int32"
+          },
+          "ParamHSE": {
+            "type": "number",
+            "description": "Gets or sets the HSE score of the device.",
+            "format": "double",
+            "nullable": true
+          },
+          "ParamOperationalSignificance": {
+            "type": "number",
+            "description": "Gets or sets the OperationalSignificance score of the device.",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object representing a DeviceService.Models.Device ."
+      },
+      "DeviceDtoEntityResponseDto": {
+        "type": "object",
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean",
+            "description": "Indicates whether the request was successful."
+          },
+          "Errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Contains any error messages associated with the response.\r\nEmpty if DeviceService.Contracts.DataTransferObjects.BaseResponseModel.IsSuccess is true.",
+            "nullable": true
+          },
+          "Data": {
+            "$ref": "#/components/schemas/DeviceDto"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a standard response wrapper for API endpoints, \r\ncontaining a success flag, error messages, and a data payload."
+      },
+      "DeviceForCreateDto": {
+        "required": [
+          "DeviceId",
+          "DeviceRef"
+        ],
+        "type": "object",
+        "properties": {
+          "DeviceId": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Get of sets DeviceId of the device."
+          },
+          "DeviceRef": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Get of sets deviceRef of the device."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object used for creating a new device, containing required input fields."
+      },
+      "DeviceForUpdateDto": {
+        "required": [
+          "DeviceId",
+          "DeviceRef"
+        ],
+        "type": "object",
+        "properties": {
+          "DeviceId": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Get of sets DeviceId of the device."
+          },
+          "DeviceRef": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Get of sets deviceRef of the device."
+          },
+          "VulnerabilityIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Gets or sets the list of vulnerability IDs associated with the current device.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object used for update a new location, containing input fields."
+      },
+      "DeviceParamForCreateDto": {
+        "required": [
+          "Active",
+          "Name",
+          "Relevance",
+          "Threshold"
+        ],
+        "type": "object",
+        "properties": {
+          "Threshold": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Active": {
+            "type": "boolean",
+            "description": ""
+          },
+          "Relevance": {
+            "type": "number",
+            "description": "",
+            "format": "double"
+          },
+          "Owner": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "DeviceParamForUpdateDto": {
+        "required": [
+          "Active",
+          "Id",
+          "Name",
+          "Relevance",
+          "Threshold"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Threshold": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Active": {
+            "type": "boolean",
+            "description": ""
+          },
+          "Relevance": {
+            "type": "number",
+            "description": "",
+            "format": "double"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "DeviceParamsForCreateDto": {
+        "required": [
+          "Data"
+        ],
+        "type": "object",
+        "properties": {
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeviceParamForCreateDto"
+            },
+            "description": ""
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "DeviceParamsForUpdateDto": {
+        "required": [
+          "Data"
+        ],
+        "type": "object",
+        "properties": {
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeviceParamForUpdateDto"
+            },
+            "description": ""
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "DeviceWithVulnerabilityDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Gets or sets the unique identifier of the device.",
+            "nullable": true
+          },
+          "DeviceId": {
+            "type": "string",
+            "description": "Gets or sets the DeviceId of the device.",
+            "nullable": true
+          },
+          "DeviceRef": {
+            "type": "string",
+            "description": "Gets or sets the DeviceRef of the device.",
+            "nullable": true
+          },
+          "Score": {
+            "type": "number",
+            "description": "Gets or sets the RBC-Index of the device.",
+            "format": "double"
+          },
+          "Impact": {
+            "type": "number",
+            "description": "Gets or sets the impact score of the device.",
+            "format": "double",
+            "nullable": true
+          },
+          "Likelihood": {
+            "type": "number",
+            "description": "Gets or sets the likelihood score of the device.",
+            "format": "double",
+            "nullable": true
+          },
+          "High": {
+            "type": "integer",
+            "description": "Gets or sets the number of vulnerabilities in the device with high risk level.",
+            "format": "int32"
+          },
+          "Medium": {
+            "type": "integer",
+            "description": "Gets or sets the number of vulnerabilities in the device with medium risk level.",
+            "format": "int32"
+          },
+          "Low": {
+            "type": "integer",
+            "description": "Gets or sets the number of vulnerabilities in the device with low risk level.",
+            "format": "int32"
+          },
+          "ParamHSE": {
+            "type": "number",
+            "description": "Gets or sets the HSE score of the device.",
+            "format": "double",
+            "nullable": true
+          },
+          "ParamOperationalSignificance": {
+            "type": "number",
+            "description": "Gets or sets the OperationalSignificance score of the device.",
+            "format": "double",
+            "nullable": true
+          },
+          "VulnerabilityList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VulnerabilityDto"
+            },
+            "description": "Gets or sets the list of vulnerabilities associated with the current location.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object used for full device response, containing input fields."
+      },
+      "DeviceWithVulnerabilityDtoEntityResponseListDto": {
+        "type": "object",
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean",
+            "description": "Indicates whether the request was successful."
+          },
+          "Errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Contains any error messages associated with the response.\r\nEmpty if DeviceService.Contracts.DataTransferObjects.BaseResponseModel.IsSuccess is true.",
+            "nullable": true
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeviceWithVulnerabilityDto"
+            },
+            "description": "The actual data payload returned from the controller.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a standard response wrapper for API endpoints, \r\ncontaining a success flag, error messages, and a data payload."
+      },
+      "FacilityDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Get or sets id of the facility",
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "description": "Get of sets name of the facility.",
+            "nullable": true
+          },
+          "Score": {
+            "type": "number",
+            "description": "Gets or sets the RBC-Index of the facility.",
+            "format": "double"
+          },
+          "Impact": {
+            "type": "number",
+            "description": "Gets or sets the impact score of the facility.",
+            "format": "double",
+            "nullable": true
+          },
+          "Likelihood": {
+            "type": "number",
+            "description": "Gets or sets the likelihood score of the facility.",
+            "format": "double",
+            "nullable": true
+          },
+          "High": {
+            "type": "integer",
+            "description": "Gets or sets the number of segments in the facility with high risk level.",
+            "format": "int32"
+          },
+          "Medium": {
+            "type": "integer",
+            "description": "Gets or sets the number of segments in the facility with medium risk level.",
+            "format": "int32"
+          },
+          "Low": {
+            "type": "integer",
+            "description": "Gets or sets the number of segments in the facility with low risk level.",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object used for facility, containing basic fields."
+      },
+      "FacilityForCreateDto": {
+        "required": [
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "Name": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Get of sets name of the facility."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object used for creating a new facility, containing required input fields."
+      },
+      "FacilityForUpdateDto": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "Get or sets name of the facility",
+            "nullable": true
+          },
+          "SegmentIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Gets or sets the list of facility IDs associated with the current facility.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object used for update a new facility, containing input fields."
+      },
+      "ImportDto": {
+        "type": "object",
+        "properties": {
+          "Type": {
+            "type": "string",
+            "description": "Import Type",
+            "nullable": true
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "description": "Import data",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a Data Transfer Object for import."
+      },
+      "Interface": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "Name": {
+            "type": "string",
+            "description": "The name of the interface.",
+            "nullable": true
+          },
+          "BaseURL": {
+            "type": "string",
+            "description": "The base url of the interface.",
+            "nullable": true
+          },
+          "APIKey": {
+            "type": "string",
+            "description": "The access token/api key used during authentication.",
+            "nullable": true
+          },
+          "Type": {
+            "$ref": "#/components/schemas/InterfaceType"
+          },
+          "Owner": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "Status": {
+            "$ref": "#/components/schemas/InterfaceStatus"
+          },
+          "ErrorMessage": {
+            "type": "string",
+            "description": "The error message during interface sync process.",
+            "nullable": true
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "The date and time when interface was created.",
+            "format": "date-time"
+          },
+          "UpdatedOn": {
+            "type": "string",
+            "description": "The date and time when interface was updated.",
+            "format": "date-time"
+          },
+          "SyncedOn": {
+            "type": "string",
+            "description": "The date and time when interface was synced.",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "InterfaceEntityResponseDto": {
+        "type": "object",
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean",
+            "description": "Indicates whether the request was successful."
+          },
+          "Errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Contains any error messages associated with the response.\r\nEmpty if DeviceService.Contracts.DataTransferObjects.BaseResponseModel.IsSuccess is true.",
+            "nullable": true
+          },
+          "Data": {
+            "$ref": "#/components/schemas/Interface"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a standard response wrapper for API endpoints, \r\ncontaining a success flag, error messages, and a data payload."
+      },
+      "InterfaceEntityResponseListDto": {
+        "type": "object",
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean",
+            "description": "Indicates whether the request was successful."
+          },
+          "Errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Contains any error messages associated with the response.\r\nEmpty if DeviceService.Contracts.DataTransferObjects.BaseResponseModel.IsSuccess is true.",
+            "nullable": true
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Interface"
+            },
+            "description": "The actual data payload returned from the controller.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a standard response wrapper for API endpoints, \r\ncontaining a success flag, error messages, and a data payload."
+      },
+      "InterfaceForCreateDto": {
+        "required": [
+          "APIKey",
+          "BaseURL",
+          "Name",
+          "Type"
+        ],
+        "type": "object",
+        "properties": {
+          "Name": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Get of sets name of the interface."
+          },
+          "BaseURL": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "APIKey": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Type": {
+            "$ref": "#/components/schemas/InterfaceType"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object used for creating a new interface, containing required input fields."
+      },
+      "InterfaceForCreateDtoEntityResponseDto": {
+        "type": "object",
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean",
+            "description": "Indicates whether the request was successful."
+          },
+          "Errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Contains any error messages associated with the response.\r\nEmpty if DeviceService.Contracts.DataTransferObjects.BaseResponseModel.IsSuccess is true.",
+            "nullable": true
+          },
+          "Data": {
+            "$ref": "#/components/schemas/InterfaceForCreateDto"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a standard response wrapper for API endpoints, \r\ncontaining a success flag, error messages, and a data payload."
+      },
+      "InterfaceForUpdateDto": {
+        "required": [
+          "APIKey",
+          "BaseURL",
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "Name": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Get of sets name of the interface."
+          },
+          "BaseURL": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "APIKey": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object used for creating a new interface, containing required input fields."
+      },
+      "InterfaceStatus": {
+        "enum": [
+          "Active",
+          "Disabled",
+          "Synced",
+          "Syncing",
+          "Failed"
+        ],
+        "type": "string",
+        "description": "Interface status"
+      },
+      "InterfaceType": {
+        "enum": [
+          "Tenable",
+          "Nozomi",
+          "OTbase"
+        ],
+        "type": "string",
+        "description": "Interface type"
+      },
+      "LocationBasicDto": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "Get or sets id of the location",
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "description": "Get or sets name of the location",
+            "nullable": true
+          },
+          "Facilities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Gets or sets the list of facility IDs associated with the current location.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object used for basic location response, containing input fields."
+      },
+      "LocationBasicDtoEntityResponseListDto": {
+        "type": "object",
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean",
+            "description": "Indicates whether the request was successful."
+          },
+          "Errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Contains any error messages associated with the response.\r\nEmpty if DeviceService.Contracts.DataTransferObjects.BaseResponseModel.IsSuccess is true.",
+            "nullable": true
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LocationBasicDto"
+            },
+            "description": "The actual data payload returned from the controller.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a standard response wrapper for API endpoints, \r\ncontaining a success flag, error messages, and a data payload."
+      },
+      "LocationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Get or sets id of the location",
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "description": "Get or sets name of the location",
+            "nullable": true
+          },
+          "Coordinates": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "description": "Gets or sets the number Geo-coordinates [long, lat] of the location",
+            "nullable": true
+          },
+          "Score": {
+            "type": "number",
+            "description": "Gets or sets the RBC-Index of the location.",
+            "format": "double"
+          },
+          "Impact": {
+            "type": "number",
+            "description": "Gets or sets the impact score of the location.",
+            "format": "double",
+            "nullable": true
+          },
+          "Owner": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "Likelihood": {
+            "type": "number",
+            "description": "Gets or sets the likelihood score of the location.",
+            "format": "double",
+            "nullable": true
+          },
+          "High": {
+            "type": "integer",
+            "description": "Gets or sets the number of facilities in the location with high risk level.",
+            "format": "int32"
+          },
+          "Medium": {
+            "type": "integer",
+            "description": "Gets or sets the number of facilities in the location with medium risk level.",
+            "format": "int32"
+          },
+          "Low": {
+            "type": "integer",
+            "description": "Gets or sets the number of facilities in the location with low risk level.",
+            "format": "int32"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "Gets or sets the date and time when the location was created.",
+            "format": "date-time"
+          },
+          "UpdatedOn": {
+            "type": "string",
+            "description": "Gets or sets the date and time when the location was last updated.",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object used for location response, containing basic fields."
+      },
+      "LocationDtoEntityResponseDto": {
+        "type": "object",
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean",
+            "description": "Indicates whether the request was successful."
+          },
+          "Errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Contains any error messages associated with the response.\r\nEmpty if DeviceService.Contracts.DataTransferObjects.BaseResponseModel.IsSuccess is true.",
+            "nullable": true
+          },
+          "Data": {
+            "$ref": "#/components/schemas/LocationDto"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a standard response wrapper for API endpoints, \r\ncontaining a success flag, error messages, and a data payload."
+      },
+      "LocationForCreateDto": {
+        "required": [
+          "Name"
+        ],
+        "type": "object",
+        "properties": {
+          "Name": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Get of sets name of the location."
+          },
+          "Coordinates": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "description": "Get of sets name Geo-coordinates [long, lat] of the location. Default to Stuttgart.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object used for creating a new location, containing required input fields."
+      },
+      "LocationForUpdateDto": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "Get or sets name of the location",
+            "nullable": true
+          },
+          "Coordinates": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "description": "Get or sets Geo-coordinates [long, lat] of the location",
+            "nullable": true
+          },
+          "FacilityIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Gets or sets the list of facility IDs associated with the current location.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object used for update a new location, containing input fields."
+      },
+      "LocationWithFacilityDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Get or sets id of the location",
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "description": "Get or sets name of the location",
+            "nullable": true
+          },
+          "Coordinates": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "description": "Gets or sets the number Geo-coordinates [long, lat] of the location",
+            "nullable": true
+          },
+          "Score": {
+            "type": "number",
+            "description": "Gets or sets the RBC-Index of the location.",
+            "format": "double"
+          },
+          "Impact": {
+            "type": "number",
+            "description": "Gets or sets the impact score of the location.",
+            "format": "double",
+            "nullable": true
+          },
+          "Owner": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "Likelihood": {
+            "type": "number",
+            "description": "Gets or sets the likelihood score of the location.",
+            "format": "double",
+            "nullable": true
+          },
+          "High": {
+            "type": "integer",
+            "description": "Gets or sets the number of facilities in the location with high risk level.",
+            "format": "int32"
+          },
+          "Medium": {
+            "type": "integer",
+            "description": "Gets or sets the number of facilities in the location with medium risk level.",
+            "format": "int32"
+          },
+          "Low": {
+            "type": "integer",
+            "description": "Gets or sets the number of facilities in the location with low risk level.",
+            "format": "int32"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "Gets or sets the date and time when the location was created.",
+            "format": "date-time"
+          },
+          "UpdatedOn": {
+            "type": "string",
+            "description": "Gets or sets the date and time when the location was last updated.",
+            "format": "date-time"
+          },
+          "FacilityList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FacilityDto"
+            },
+            "description": "Gets or sets the list of facilities associated with the current location.",
+            "nullable": true
+          },
+          "Facilities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ObjectId"
+            },
+            "description": "Gets or sets the Id of Facilities of the location.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object used for full location response, containing input fields."
+      },
+      "LocationWithFacilityDtoEntityResponseDto": {
+        "type": "object",
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean",
+            "description": "Indicates whether the request was successful."
+          },
+          "Errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Contains any error messages associated with the response.\r\nEmpty if DeviceService.Contracts.DataTransferObjects.BaseResponseModel.IsSuccess is true.",
+            "nullable": true
+          },
+          "Data": {
+            "$ref": "#/components/schemas/LocationWithFacilityDto"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a standard response wrapper for API endpoints, \r\ncontaining a success flag, error messages, and a data payload."
+      },
+      "LocationWithFacilityDtoEntityResponseListDto": {
+        "type": "object",
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean",
+            "description": "Indicates whether the request was successful."
+          },
+          "Errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Contains any error messages associated with the response.\r\nEmpty if DeviceService.Contracts.DataTransferObjects.BaseResponseModel.IsSuccess is true.",
+            "nullable": true
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LocationWithFacilityDto"
+            },
+            "description": "The actual data payload returned from the controller.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a standard response wrapper for API endpoints, \r\ncontaining a success flag, error messages, and a data payload."
+      },
+      "ObjectId": {
+        "type": "object",
+        "properties": {
+          "Timestamp": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "CreationTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RecommendationForCreateDto": {
+        "required": [
+          "Description",
+          "Name",
+          "Title",
+          "Type"
+        ],
+        "type": "object",
+        "properties": {
+          "Title": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Description": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Type": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "ReportCreateDto": {
+        "required": [
+          "EntityId",
+          "Name",
+          "Type"
+        ],
+        "type": "object",
+        "properties": {
+          "Name": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "description": ""
+          },
+          "Type": {
+            "$ref": "#/components/schemas/ReportType"
+          },
+          "EntityId": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer object to create a  a DeviceService.Models.Report."
+      },
+      "ReportDto": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "Id of the report",
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "description": "Name of the report",
+            "nullable": true
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "Date when report was created",
+            "format": "date-time"
+          },
+          "Type": {
+            "$ref": "#/components/schemas/ReportType"
+          },
+          "Content": {
+            "type": "string",
+            "description": "Content of the report.",
+            "format": "byte",
+            "nullable": true
+          },
+          "EntityId": {
+            "type": "string",
+            "description": "Unique identifier of the entity e.g., DeviceService.Models.Location, DeviceService.Models.Segment or DeviceService.Models.Device.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a simplified view of a DeviceService.Models.Report used for data transfer."
+      },
+      "ReportDtoEntityResponseDto": {
+        "type": "object",
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean",
+            "description": "Indicates whether the request was successful."
+          },
+          "Errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Contains any error messages associated with the response.\r\nEmpty if DeviceService.Contracts.DataTransferObjects.BaseResponseModel.IsSuccess is true.",
+            "nullable": true
+          },
+          "Data": {
+            "$ref": "#/components/schemas/ReportDto"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a standard response wrapper for API endpoints, \r\ncontaining a success flag, error messages, and a data payload."
+      },
+      "ReportDtoEntityResponseListDto": {
+        "type": "object",
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean",
+            "description": "Indicates whether the request was successful."
+          },
+          "Errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Contains any error messages associated with the response.\r\nEmpty if DeviceService.Contracts.DataTransferObjects.BaseResponseModel.IsSuccess is true.",
+            "nullable": true
+          },
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReportDto"
+            },
+            "description": "The actual data payload returned from the controller.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a standard response wrapper for API endpoints, \r\ncontaining a success flag, error messages, and a data payload."
+      },
+      "ReportType": {
+        "enum": [
+          "Location",
+          "Segment",
+          "Device"
+        ],
+        "type": "string",
+        "description": "Report type"
+      },
+      "ResetPasswordDto": {
+        "type": "object",
+        "properties": {
+          "Token": {
+            "type": "string",
+            "description": "Gets or sets the Token.",
+            "nullable": true
+          },
+          "Email": {
+            "type": "string",
+            "description": "Gets or sets the Email of the user.",
+            "nullable": true
+          },
+          "Password": {
+            "type": "string",
+            "description": "Gets or sets the Password of the user.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a Data Transfer Object for user register."
+      },
+      "SegmentForCreateDto": {
+        "required": [
+          "Network",
+          "NetworkAddress",
+          "NetworkGroup",
+          "NetworkId",
+          "NetworkLocation",
+          "NetworkType"
+        ],
+        "type": "object",
+        "properties": {
+          "Network": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The name of the segment."
+          },
+          "NetworkId": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Unique identifier of the segment on external system."
+          },
+          "NetworkGroup": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Group of the segment e.g., Machining"
+          },
+          "NetworkType": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The type of the segment e.g., IP"
+          },
+          "NetworkAddress": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Address of the segment."
+          },
+          "NetworkLocation": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Name of the physical or logical location of the segment."
+          },
+          "NetworkLocationId": {
+            "type": "string",
+            "description": "Unique identifier of the physical or logical location of the segment.",
+            "nullable": true
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "",
+            "format": "date-time"
+          },
+          "DeviceIds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ObjectId"
+            },
+            "description": "",
+            "nullable": true
+          },
+          "DeviceList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeviceForCreateDto"
+            },
+            "description": "",
+            "nullable": true
+          },
+          "Owner": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "Score": {
+            "type": "number",
+            "description": "",
+            "format": "double"
+          },
+          "High": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+          },
+          "Medium": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+          },
+          "Low": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+          },
+          "ParamNetworkType": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object for creating a new DeviceService.Models.Segment segment."
+      },
+      "SegmentParamForCreateDto": {
+        "required": [
+          "Active",
+          "Name",
+          "Relevance",
+          "Threshold"
+        ],
+        "type": "object",
+        "properties": {
+          "Threshold": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Active": {
+            "type": "boolean",
+            "description": ""
+          },
+          "Relevance": {
+            "type": "number",
+            "description": "",
+            "format": "double"
+          },
+          "Owner": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "SegmentParamForUpdateDto": {
+        "required": [
+          "Active",
+          "Id",
+          "Name",
+          "Relevance",
+          "Threshold"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Threshold": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+          },
+          "Name": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Active": {
+            "type": "boolean",
+            "description": ""
+          },
+          "Relevance": {
+            "type": "number",
+            "description": "",
+            "format": "double"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "SegmentParamsForCreateDto": {
+        "required": [
+          "Data"
+        ],
+        "type": "object",
+        "properties": {
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SegmentParamForCreateDto"
+            },
+            "description": ""
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "SegmentParamsForUpdateDto": {
+        "required": [
+          "Data"
+        ],
+        "type": "object",
+        "properties": {
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SegmentParamForUpdateDto"
+            },
+            "description": ""
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "SendReportDto": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "description": "Id of the report",
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "description": "Name of the report",
+            "nullable": true
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "Date when report was created",
+            "format": "date-time"
+          },
+          "Type": {
+            "$ref": "#/components/schemas/ReportType"
+          },
+          "Content": {
+            "type": "string",
+            "description": "Content of the report.",
+            "nullable": true
+          },
+          "EntityId": {
+            "type": "string",
+            "description": "Unique identifier of the entity e.g., DeviceService.Models.Location, DeviceService.Models.Segment or DeviceService.Models.Device.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a simplified view of a DeviceService.Models.Report used for data transfer."
+      },
+      "SnapshotFacilityByDatesDto": {
+        "required": [
+          "EndDay",
+          "StartDay"
+        ],
+        "type": "object",
+        "properties": {
+          "StartDay": {
+            "type": "string",
+            "description": "Start Day",
+            "format": "date"
+          },
+          "EndDay": {
+            "type": "string",
+            "description": "End Day",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false,
+        "description": "SnapshotFacilityByDatesDto"
+      },
+      "SnapshotLocationByDatesDto": {
+        "required": [
+          "EndDay",
+          "StartDay"
+        ],
+        "type": "object",
+        "properties": {
+          "StartDay": {
+            "type": "string",
+            "description": "Start Day",
+            "format": "date"
+          },
+          "EndDay": {
+            "type": "string",
+            "description": "End Day",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false,
+        "description": "SnapshotLocationByDatesDto"
+      },
+      "SnapshotSegmentByDatesDto": {
+        "required": [
+          "EndDay",
+          "StartDay"
+        ],
+        "type": "object",
+        "properties": {
+          "StartDay": {
+            "type": "string",
+            "description": "Start Day",
+            "format": "date"
+          },
+          "EndDay": {
+            "type": "string",
+            "description": "End Day",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false,
+        "description": "SnapshotSegmentByDatesDto"
+      },
+      "UserForCreateDto": {
+        "required": [
+          "Email",
+          "Password",
+          "Username"
+        ],
+        "type": "object",
+        "properties": {
+          "Username": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Email": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Password": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "UserIdentificationDto": {
+        "required": [
+          "Email"
+        ],
+        "type": "object",
+        "properties": {
+          "Email": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Gets or sets the Email of the user."
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "UserLogin": {
+        "required": [
+          "Password",
+          "Username"
+        ],
+        "type": "object",
+        "properties": {
+          "Username": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Password": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "VulnerabilityDto": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "CveId": {
+            "type": "string",
+            "description": "Gets or sets the CveId of the vulnerability.",
+            "nullable": true
+          },
+          "Severity": {
+            "type": "string",
+            "description": "Gets or sets the Severity of the vulnerability.",
+            "nullable": true
+          },
+          "Priority": {
+            "type": "string",
+            "description": "Gets or sets the Priority of the vulnerability.",
+            "nullable": true
+          },
+          "DatePublished": {
+            "type": "string",
+            "description": "Gets or sets the DatePublished of the vulnerability.",
+            "format": "date"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "Gets or sets the CreatedOn of the vulnerability.",
+            "format": "date-time"
+          },
+          "UpdatedOn": {
+            "type": "string",
+            "description": "Gets or sets the CreatedOn of the vulnerability.",
+            "format": "date-time"
+          },
+          "Score": {
+            "type": "number",
+            "description": "Gets or sets the Score of the vulnerability.",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Data Transfer Object representing a vulnerability."
+      },
+      "VulnerabilityForCreateDto": {
+        "required": [
+          "CveId",
+          "DatePublished",
+          "Priority",
+          "Score",
+          "Severity"
+        ],
+        "type": "object",
+        "properties": {
+          "CveId": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Severity": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "Priority": {
+            "minLength": 1,
+            "type": "string",
+            "description": ""
+          },
+          "DatePublished": {
+            "type": "string",
+            "description": "",
+            "format": "date"
+          },
+          "CreatedOn": {
+            "type": "string",
+            "description": "",
+            "format": "date-time"
+          },
+          "Score": {
+            "type": "number",
+            "description": "",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Please insert JWT with Bearer into field",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}
