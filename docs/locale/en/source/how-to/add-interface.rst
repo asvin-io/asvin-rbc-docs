@@ -1,6 +1,6 @@
-============
-Add Inteface
-============
+=============
+Add Interface
+=============
 Risk by Context™ framework supports a range of interfaces designed to seamlessly pull contextual data from diverse sources and push actionable risk insights to decision-making systems such as Security Operations Centers (SoCs). These interfaces enable real-time data ingestion from various environments—including asset management system, vulnerability management system, directory services—ensuring a comprehensive understanding of network topology, vulnerabilities and operational conditions. By integrating with existing security ecosystems, the RBC interfaces facilitate automated, informed, and timely responses to emerging threats, thereby enhancing situational awareness and accelerating risk mitigation efforts.
 
 Adding a New Interface
